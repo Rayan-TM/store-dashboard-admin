@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="کلاسیک">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/output.css" />
+    <link rel="stylesheet" href="styles/custom.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="bg-esther text-title">
+    <header
+      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+    >
+      <button class="border-l-[1px] pl-5 border-l-esther">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+      <a href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
+      <div class="relative theme">
+        <div
+          class="btn-theme cursor-pointer text-lg flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
+        >
+          <i class="fa-solid fa-droplet text-primary"></i
+          ><span class="mr-3 font-light">تم صفحه</span>
+        </div>
+        <div
+          class="theme-list z-10 hidden absolute left-1/2 -translate-x-1/2 w-[120px] p-4 top-[130%] bg-secondary border-primary border-2 rounded-md before:content-[''] before:absolute before:bg-secondary before:border-primary before:w-3 before:h-3 before:-top-2 before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:border-l-2 before:border-t-2"
+        >
+          <ul class="flex flex-col gap-3">
+            <li>
+              <span>کلاسیک</span
+              ><i class="fa-solid fa-droplet text-[#fd3859]"></i>
+            </li>
+            <li>
+              <span>بنفش</span
+              ><i class="fa-solid fa-droplet text-[#bb86fc]"></i>
+            </li>
+            <li>
+              <span>نارنجی</span
+              ><i class="fa-solid fa-droplet text-[#ff5210]"></i>
+            </li>
+            <li>
+              <span>قرمز</span
+              ><i class="fa-solid fa-droplet text-[#EB1616]"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mr-auto">
+        <i class="fa-solid fa-user-tie text-primary ml-2"></i>
+        <span>rayan@gmail.com</span>
+      </div>
+    </header>
+    <div class="flex gap-8 pt-24 min-h-screen">
+      <aside
+        class="flex-1 transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md min-h-full relative"
+      >
+        <div
+          class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
+        >
+          داشبورد
+        </div>
+        <nav class="mt-20">
+          <ul>
+            <li class="border-t-[1px]">
+              <a href="index.html"
+                ><i class="fa-solid fa-house"></i><span>خانه</span></a
+              >
+            </li>
+            <li>
+              <a href="newContent.html" class="active"
+                ><i class="fa-solid fa-pen-to-square"></i
+                ><span>محتوای جدید</span></a
+              >
+            </li>
+            <li>
+              <a href="products.html"
+                ><i class="fa-solid fa-store"></i><span>محصولات</span></a
+              >
+            </li>
+            <li>
+              <a href="blogs.html"
+                ><i class="fa-solid fa-newspaper"></i><span>وبلاگ</span></a
+              >
+            </li>
+            <li>
+              <a href="comments.html"
+                ><i class="fa-solid fa-comments"></i><span>کامنت ها</span></a
+              >
+            </li>
+            <li>
+              <a href="users.html"
+                ><i class="fa-solid fa-user-group"></i><span>کاربران</span></a
+              >
+            </li>
+            <li>
+              <a href="offs.html"
+                ><i class="fa-solid fa-dollar-sign mr-2"></i
+                ><span>تخفیف ها</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="flex-[4] new-content h-fit bg-secondary rounded-md w-full">
+        <h2>افزودن محتوای جدید</h2>
+        <form class="mt-5 p-4 form-filter">
+          <div class="flex flex-col gap-3 mr-2">
+            <label for="title" class="font-bold text-sm">عنوان</label>
+            <input
+              type="text"
+              id="title"
+              class="focus:border-primary border-2 border-esther rounded-md outline-none px-4 py-2 transition-[border] w-2/3"
+            />
+          </div>
+          <hr class="mt-5 text-esther" />
+          <h3 class="font-bold my-5">توضیحات</h3>
+          <hr class="h-1 bg-title" />
+          <div id="editor"></div>
+          <div class="border-t-[1px] mt-5 border-t-esther">
+            <h3 class="mt-5 mb-8 font-bold">نوع محتوا</h3>
+            <div class="flex gap-8">
+              <div class="form-group">
+                <select id="post-type" class="form-field" required>
+                  <option value="">نوع *</option>
+                  <option value="product">محصول</option>
+                  <option value="blog">بلاگ</option>
+                </select>
+                <label for="post-type" class="form-label invisible"
+                  >نوع *</label
+                >
+              </div>
+              <div class="form-group">
+                <select id="category" class="form-field" required>
+                  <option value="">دسته بندی</option>
+                </select>
+                <label for="category" class="form-label invisible"
+                  >دسته بندی</label
+                >
+              </div>
+              <div class="form-group mb-8 price-container">
+                <input type="text" class="form-field" id="product-price" />
+                <label for="product-price" class="form-label"
+                  >قیمت محصول <span class="text-[10px]">(تومان)</span></label
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            id="status-container"
+            class="border-t-[1px] mt-5 border-t-esther"
+          >
+            <h3 class="my-5 font-bold">وضعیت</h3>
+            <div class="flex gap-8">
+              <div>
+                <label class="flex gap-2 mb-2" for="status">
+                  <div class="checkbox">
+                    <input type="checkbox" id="status" checked />
+                    <svg viewBox="0 0 21 18" class="check">
+                      <symbol id="tick-path" viewBox="0 0 21 18">
+                        <path
+                          d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                          fill="none"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </symbol>
+                      <defs>
+                        <mask id="tick">
+                          <use class="tick mask" href="#tick-path" />
+                        </mask>
+                      </defs>
+                      <use
+                        class="tick"
+                        href="#tick-path"
+                        stroke="currentColor"
+                      />
+                      <path
+                        fill="white"
+                        mask="url(#tick)"
+                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
+                      />
+                    </svg>
+                    <svg class="lines" viewBox="0 0 11 11">
+                      <path d="M5.88086 5.89441L9.53504 4.26746" />
+                      <path d="M5.5274 8.78838L9.45391 9.55161" />
+                      <path d="M3.49371 4.22065L5.55387 0.79198" />
+                    </svg>
+                  </div>
+                  <span>فعال</span>
+                </label>
+                <span class="text-xs"> آیا محتوا فعال باشد؟ </span>
+              </div>
+              <div>
+                <label class="flex gap-2 mb-2" for="available-checkbox">
+                  <div class="checkbox">
+                    <input type="checkbox" id="available-checkbox" checked />
+                    <svg viewBox="0 0 21 18" class="check">
+                      <symbol id="tick-path2" viewBox="0 0 21 18">
+                        <path
+                          d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                          fill="none"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </symbol>
+                      <defs>
+                        <mask id="tick2">
+                          <use class="tick mask" href="#tick-path2" />
+                        </mask>
+                      </defs>
+                      <use
+                        class="tick"
+                        href="#tick-path2"
+                        stroke="currentColor"
+                      />
+                      <path
+                        fill="white"
+                        mask="url(#tick2)"
+                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
+                      />
+                    </svg>
+                    <svg class="lines" viewBox="0 0 11 11">
+                      <path d="M5.88086 5.89441L9.53504 4.26746" />
+                      <path d="M5.5274 8.78838L9.45391 9.55161" />
+                      <path d="M3.49371 4.22065L5.55387 0.79198" />
+                    </svg>
+                  </div>
+                  <span>موجود</span>
+                </label>
+                <span class="text-xs">آیا محصول موجود باشد؟</span>
+              </div>
+              <div>
+                <label class="flex gap-2 mb-2" for="comment-enabled">
+                  <div class="checkbox">
+                    <input type="checkbox" id="comment-enabled" />
+                    <svg viewBox="0 0 21 18" class="check">
+                      <symbol id="tick-path" viewBox="0 0 21 18">
+                        <path
+                          d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                          fill="none"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </symbol>
+                      <defs>
+                        <mask id="tick3">
+                          <use class="tick mask" href="#tick-path" />
+                        </mask>
+                      </defs>
+                      <use
+                        class="tick"
+                        href="#tick-path"
+                        stroke="currentColor"
+                      />
+                      <path
+                        fill="white"
+                        mask="url(#tick3)"
+                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
+                      />
+                    </svg>
+                    <svg class="lines" viewBox="0 0 11 11">
+                      <path d="M5.88086 5.89441L9.53504 4.26746" />
+                      <path d="M5.5274 8.78838L9.45391 9.55161" />
+                      <path d="M3.49371 4.22065L5.55387 0.79198" />
+                    </svg>
+                  </div>
+                  <span>امکان ارسال نظر</span>
+                </label>
+                <span class="text-xs max-w-52 block"
+                  >در صورت غیرفعال بودن امکان ثبت کامنت برای محتوا وجود ندارد
+                </span>
+              </div>
+            </div>
+          </div>
+          <button
+            id="submit-btn"
+            class="bg-primary p-2 w-28 block text-white rounded-md mt-12 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+          ></button>
+        </form>
+      </main>
+      <aside class="flex-1 rounded-md ml-8 w-[200px] text-center text-xs">
+        <div class="uploader-container single-image-container">
+          <i class="fa-solid fa-cloud-arrow-up text-7xl single-upload-icon"></i>
+          <span>فایل خود را اینجا بکشید و رها کنید یا</span>
+          <label for="single-img"> آپلود عکس </label>
+          <input
+            class="hidden"
+            type="file"
+            id="single-img"
+            accept="image/jpeg, image/png, image/jpg, image/webp"
+          />
+          <span>محدودیت حجم فایل: 120 کیلوبایت</span>
+        </div>
+        <div class="uploader-container multi-image-container">
+          <i class="fa-brands fa-dropbox text-7xl"></i>
+          <div class="multi-img-container hidden"></div>
+          <span>آپلود چندتایی عکس</span>
+          <label for="multi-img"> آپلود عکس </label>
+          <input
+            multiple
+            class="hidden"
+            type="file"
+            id="multi-img"
+            accept="image/*"
+          />
+          <span>محدودیت حجم فایل: 120 کیلوبایت</span>
+        </div>
+        <div class="uploader-container color-picker">
+          <i class="fa-solid fa-palette text-7xl"></i>
+          <span>رنگ های محصول را انتخاب کنید</span>
+          <input
+            type="text"
+            class="color-input bg-esther w-full px-3 py-2 block rounded-md outline-none"
+            placeholder="search"
+          />
+          <div
+            class="select-color flex-col bg-esther w-full rounded-md overflow-hidden overflow-y-auto cursor-pointer max-h-[100px] hidden"
+          ></div>
+          <div
+            class="colors-container flex w-full flex-wrap gap-3 justify-center mt-5"
+          ></div>
+        </div>
+      </aside>
+    </div>
+    <script src="js/sweetalert2@11.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/ckeditor.js"></script>
+    <script src="js/newContent.js"></script>
+    <script src="js/filterTable.js"></script>
+  </body>
+</html>

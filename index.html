@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="کلاسیک">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/output.css" />
+    <link rel="stylesheet" href="styles/custom.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="bg-esther text-title">
+    <header
+      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+    >
+      <button class="border-l-[1px] pl-5 border-l-esther">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+      <a href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
+      <div class="relative theme">
+        <div
+          class="btn-theme cursor-pointer text-lg flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
+        >
+          <i class="fa-solid fa-droplet text-primary"></i
+          ><span class="mr-3 font-light">تم صفحه</span>
+        </div>
+        <div
+          class="theme-list z-10 hidden absolute left-1/2 -translate-x-1/2 w-[120px] p-4 top-[130%] bg-secondary border-primary border-2 rounded-md before:content-[''] before:absolute before:bg-secondary before:border-primary before:w-3 before:h-3 before:-top-2 before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:border-l-2 before:border-t-2"
+        >
+          <ul class="flex flex-col gap-3">
+            <li>
+              <span>کلاسیک</span
+              ><i class="fa-solid fa-droplet text-[#fd3859]"></i>
+            </li>
+            <li>
+              <span>بنفش</span
+              ><i class="fa-solid fa-droplet text-[#bb86fc]"></i>
+            </li>
+            <li>
+              <span>نارنجی</span
+              ><i class="fa-solid fa-droplet text-[#ff5210]"></i>
+            </li>
+            <li>
+              <span>قرمز</span
+              ><i class="fa-solid fa-droplet text-[#EB1616]"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mr-auto">
+        <i class="fa-solid fa-user-tie text-primary ml-2"></i>
+        <span>rayan@gmail.com</span>
+      </div>
+    </header>
+    <div class="flex gap-8 pt-24 min-h-screen">
+      <aside
+        class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
+      >
+        <div
+          class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
+        >
+          داشبورد
+        </div>
+        <nav class="mt-20">
+          <ul>
+            <li class="border-t-[1px]">
+              <a href="index.html" class="active"
+                ><i class="fa-solid fa-house"></i><span>خانه</span></a
+              >
+            </li>
+            <li>
+              <a href="newContent.html"
+                ><i class="fa-solid fa-pen-to-square"></i
+                ><span>محتوای جدید</span></a
+              >
+            </li>
+            <li>
+              <a href="products.html"
+                ><i class="fa-solid fa-store"></i><span>محصولات</span></a
+              >
+            </li>
+            <li>
+              <a href="blogs.html"
+                ><i class="fa-solid fa-newspaper"></i><span>وبلاگ</span></a
+              >
+            </li>
+            <li>
+              <a href="comments.html"
+                ><i class="fa-solid fa-comments"></i><span>کامنت ها</span></a
+              >
+            </li>
+            <li>
+              <a href="users.html"
+                ><i class="fa-solid fa-user-group"></i><span>کاربران</span></a
+              >
+            </li>
+            <li>
+              <a href="offs.html"
+                ><i class="fa-solid fa-dollar-sign mr-2"></i
+                ><span>تخفیف ها</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="flex flex-wrap gap-8 h-fit w-full home">
+        <div class="bg-secondary rounded-md w-[47%] shadow-md">
+          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+            امتیاز شما
+          </h2>
+          <div class="flex justify-between gap-3 p-5 font-bold">
+            <div>
+              <span class="text-3xl block mb-4">کیفیت محتوا</span>
+              <p class="text-xl text-primary">
+                میانگین امتیاز شما که توسط ابزار کیفیت محتوا محاسبه می‌شود
+              </p>
+            </div>
+            <div class="w-1/2">
+              <div
+                class="content-quality-circle w-[120px] h-[120px] rounded-full bg-esther mx-auto flex justify-center items-center"
+              >
+                <div
+                  class="bg-secondary w-[105px] h-[105px] rounded-full flex justify-center items-center"
+                >
+                  <span class="text-xl">75%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-secondary rounded-md w-[47%] shadow-md">
+          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+            لیست مقالات امروز شما
+          </h2>
+          <ul id="blog-list" class="p-5 home-content-list">
+            
+          </ul>
+        </div>
+        <div class="bg-secondary rounded-md w-[47%] shadow-md">
+          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+            تعداد کل مقالات شما
+          </h2>
+          <div class="flex flex-col gap-3 text-center p-5">
+            <span id="blogs-count" class="font-bold text-4xl">0</span>
+            <span class="text-primary font-bold text-xl">مقاله درج شده است</span>
+          </div>
+        </div>
+
+        <div class="bg-secondary rounded-md w-[47%] shadow-md">
+          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+            تعداد کل محصولات شما
+          </h2>
+          <div class="flex flex-col gap-3 text-center p-5">
+            <span id="products-count" class="font-bold text-4xl">0</span>
+            <span class="text-primary font-bold text-xl">محصول درج شده است</span>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="js/sweetalert2@11.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

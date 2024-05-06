@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .theme-list li {
+    @apply flex gap-2 items-center justify-end hover:text-esther;
+  }
+
+  .theme-list li span {
+    @apply cursor-pointer;
+  }
+
+  .sidebar li {
+    @apply border-b-[1px] border-esther;
+  }
+
+  .sidebar a {
+    @apply py-3 px-4 flex items-center gap-3 text-nowrap;
+  }
+
+  .sidebar a.active {
+    @apply brightness-200 text-primary border-r-4 border-primary;
+  }
+
+  .sidebar a i {
+    @apply text-lg text-primary;
+  }
+
+  .home-content-list {
+    @apply text-primary list-disc list-inside;
+  }
+
+  .home-content-list li:hover {
+    @apply underline font-bold;
+  }
+
+  main:not(.home) {
+    @apply mb-8 shadow-md;
+  }
+
+  main:not(.home, .new-content) {
+    @apply h-fit bg-secondary rounded-md w-full ml-8;
+  }
+
+  .main-table .form-filter {
+    @apply flex flex-wrap gap-x-4 gap-y-4 justify-between items-end;
+  }
+
+  main h2 {
+    @apply font-bold text-lg border-b-[1px] border-esther px-4 py-5;
+  }
+
+  .main-table > div {
+    @apply px-4 py-5 mt-5;
+  }
+
+  .form-group {
+    @apply relative;
+  }
+  .form-field {
+    @apply border-b-[1px] border-title outline-none transition-[border] duration-300 w-[220px] text-sm bg-[transparent];
+  }
+
+  .form-field option {
+    @apply bg-secondary;
+  }
+
+  .form-field:focus {
+    @apply border-b-2 border-primary;
+  }
+
+  .form-field:focus ~ .form-label,
+  .form-field.valid ~ .form-label {
+    @apply text-primary text-xs font-bold -top-5 brightness-100 visible;
+  }
+  .form-label {
+    @apply absolute top-0 block transition-all duration-300 text-title text-sm cursor-text brightness-75;
+  }
+
+  .main-table button[type="submit"] {
+    @apply bg-primary text-white text-sm rounded-sm px-5 py-3 ml-auto shadow-lg;
+  }
+
+  .main-table table {
+    @apply border-[1px] rounded-sm mt-5 w-full text-right;
+  }
+
+  .main-table td,
+  .main-table th {
+    @apply border-[1px] px-4 py-2 text-center;
+  }
+
+  .main-table tr {
+    @apply text-sm;
+  }
+
+  .main-table td img {
+    @apply w-28 mx-auto;
+  }
+
+  .main-table .actions > div {
+    @apply flex gap-3 justify-center;
+  }
+
+  .main-table .actions button {
+    @apply text-title text-xl hover:text-primary transition-colors duration-150;
+  }
+
+  .new-content .checkbox {
+    @apply block w-6 h-6 cursor-pointer relative;
+  }
+
+  .new-content .checkbox svg {
+    @apply absolute block;
+  }
+
+  .new-content .checkbox input {
+    @apply border-2 border-esther bg-[transparent] outline-none appearance-none w-6 h-6 rounded-sm shadow-inner shadow-esther transition-[background-color] duration-300;
+  }
+  .new-content .checkbox input:checked {
+    @apply bg-primary shadow-none border-none;
+  }
+
+  .new-content .checkbox .check {
+    @apply w-8 h-6 left-0 top-0 text-primary;
+  }
+
+  .new-content .checkbox .check .tick.mask {
+    @apply stroke-white;
+  }
+
+  .new-content .checkbox .lines {
+    @apply w-3 h-5 fill-none stroke-primary -top-3 -right-4;
+  }
+
+  .uploader-container {
+    @apply bg-secondary shadow-md rounded-md flex flex-col items-center justify-between gap-3 text-primary py-4 px-5 mb-8;
+  }
+
+  .uploader-container label {
+    @apply cursor-pointer bg-esther hover:bg-primary hover:text-white transition-all duration-150 text-title px-5 py-3 rounded-md font-bold text-sm w-full;
+  }
+
+  .multi-img-container {
+    @apply flex-wrap gap-2 bg-esther p-2 rounded-md max-h-44 overflow-hidden overflow-y-auto;
+  }
+
+  .multi-img-container img {
+    @apply w-[44px] rounded-sm;
+  }
+
+  .multi-img-container button,
+  .single-img-container button {
+    @apply absolute top-0 right-0 items-center justify-center hidden bg-primary text-white rounded-full p-[2px];
+  }
+
+  .input-error {
+    @apply text-primary text-xs block text-right mt-2;
+  }
+
+  .select-color span {
+    @apply block p-2 text-left text-title font-bold transition-all duration-300;
+  }
+
+  .select-color span:hover {
+    @apply bg-primary text-secondary;
+  }
+
+  .colors-container div {
+    @apply w-10 h-10 rounded-full relative cursor-pointer border-[1px] border-title;
+  }
+
+  .colors-container div span {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 bg-esther text-title px-2 block text-xs rounded-lg opacity-0 transition-all duration-200;
+  }
+
+  .colors-container div:hover span {
+    @apply opacity-100 -top-5;
+  }
+
+  #page-buttons-container {
+    @apply flex justify-center items-center my-3;
+  }
+
+  #page-buttons-container li {
+    @apply px-5 py-3 first:rounded-s-full last:rounded-e-full bg-esther text-title;
+  }
+
+  #page-buttons-container li.active {
+    @apply bg-primary text-secondary
+  }
+}
+
+@layer base {
+  html[data-theme="کلاسیک"] {
+    --color-esther: #ebeff5;
+    --color-secondary: #ffffff;
+    --color-primary: #fd3859;
+    --color-title: #2a2a2a;
+  }
+
+  html[data-theme="بنفش"] {
+    --color-esther: #121212;
+    --color-secondary: #1e1e1e;
+    --color-primary: #bb86fc;
+    --color-title: #ffffff;
+  }
+
+  html[data-theme="نارنجی"] {
+    --color-esther: #55221f;
+    --color-secondary: #1e1e1e;
+    --color-primary: #ff5210;
+    --color-title: #ffffff;
+  }
+
+  html[data-theme="قرمز"] {
+    --color-esther: #111;
+    --color-secondary: #191c24;
+    --color-primary: #eb1616;
+    --color-title: #fff;
+  }
+}

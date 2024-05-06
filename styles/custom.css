@@ -1,0 +1,52 @@
+@import url("./fonts.css");
+
+body {
+  direction: rtl;
+  font-family: "iranyekan";
+}
+
+.content-quality-circle {
+  background-image: conic-gradient(
+    var(--color-primary) 270deg,
+    var(--color-esther) 270deg
+  );
+}
+
+.new-content .checkbox .check .tick {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.2s;
+}
+
+.new-content .checkbox .lines {
+  stroke-dasharray: 4.5px;
+  stroke-dashoffset: 13.5px;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.new-content .checkbox input:checked ~ .lines{
+    animation: check .3s ease .21s;
+}
+
+.new-content .checkbox input:checked ~ .check .tick{
+    animation: check .3s both;
+}
+
+@keyframes check {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+::-webkit-scrollbar{
+  width: 5px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: var(--color-title);
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: var(--color-primary);
+}

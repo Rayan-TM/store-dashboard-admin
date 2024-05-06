@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="کلاسیک">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/output.css" />
+    <link rel="stylesheet" href="styles/custom.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="bg-esther text-title">
+    <header
+      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+    >
+      <button class="border-l-[1px] pl-5 border-l-esther">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+      <a href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
+      <div class="relative theme">
+        <div
+          class="btn-theme cursor-pointer text-lg flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
+        >
+          <i class="fa-solid fa-droplet text-primary"></i
+          ><span class="mr-3 font-light">تم صفحه</span>
+        </div>
+        <div
+          class="theme-list z-10 hidden absolute left-1/2 -translate-x-1/2 w-[120px] p-4 top-[130%] bg-secondary border-primary border-2 rounded-md before:content-[''] before:absolute before:bg-secondary before:border-primary before:w-3 before:h-3 before:-top-2 before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:border-l-2 before:border-t-2"
+        >
+          <ul class="flex flex-col gap-3">
+            <li>
+              <span>کلاسیک</span
+              ><i class="fa-solid fa-droplet text-[#fd3859]"></i>
+            </li>
+            <li>
+              <span>بنفش</span
+              ><i class="fa-solid fa-droplet text-[#bb86fc]"></i>
+            </li>
+            <li>
+              <span>نارنجی</span
+              ><i class="fa-solid fa-droplet text-[#ff5210]"></i>
+            </li>
+            <li>
+              <span>قرمز</span
+              ><i class="fa-solid fa-droplet text-[#EB1616]"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mr-auto">
+        <i class="fa-solid fa-user-tie text-primary ml-2"></i>
+        <span>rayan@gmail.com</span>
+      </div>
+    </header>
+    <div class="flex gap-8 pt-24 min-h-screen">
+      <aside
+        class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md min-h-full relative"
+      >
+        <div
+          class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
+        >
+          داشبورد
+        </div>
+        <nav class="mt-20">
+          <ul>
+            <li class="border-t-[1px]">
+              <a href="index.html"
+                ><i class="fa-solid fa-house"></i><span>خانه</span></a
+              >
+            </li>
+            <li>
+              <a href="newContent.html"
+                ><i class="fa-solid fa-pen-to-square"></i
+                ><span>محتوای جدید</span></a
+              >
+            </li>
+            <li>
+              <a href="products.html" class="active"
+                ><i class="fa-solid fa-store"></i><span>محصولات</span></a
+              >
+            </li>
+            <li>
+              <a href="blogs.html"
+                ><i class="fa-solid fa-newspaper"></i><span>وبلاگ</span></a
+              >
+            </li>
+            <li>
+              <a href="comments.html"
+                ><i class="fa-solid fa-comments"></i><span>کامنت ها</span></a
+              >
+            </li>
+            <li>
+              <a href="users.html"
+                ><i class="fa-solid fa-user-group"></i><span>کاربران</span></a
+              >
+            </li>
+            <li>
+              <a href="offs.html"
+                ><i class="fa-solid fa-dollar-sign mr-2"></i
+                ><span>تخفیف ها</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="main-table">
+        <h2>لیست محصولات</h2>
+        <div>
+          <form class="form-filter">
+            <div class="form-group">
+              <input type="text" class="form-field" id="id" />
+              <label for="id" class="form-label">شناسه</label>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-field" id="title" />
+              <label for="title" class="form-label">نام محصول</label>
+            </div>
+            <div class="form-group">
+              <select id="category" class="form-field" required></select>
+              <label for="category" class="form-label invisible"
+                >دسته بندی</label
+              >
+            </div>
+            <div class="form-group">
+              <select id="status" class="form-field" required>
+                <option value="">وضعیت</option>
+                <option value="1">فعال</option>
+                <option value="0">غیرفعال</option>
+              </select>
+              <label for="status" class="form-label invisible">وضعیت</label>
+            </div>
+            <div class="form-group">
+              <select id="isAvailable" class="form-field" required>
+                <option value="">موجودی</option>
+                <option value="1">موجود</option>
+                <option value="0">ناموجود</option>
+              </select>
+              <label for="isAvailable" class="form-label invisible"
+                >موجودی</label
+              >
+            </div>
+            <button id="btn-search" type="submit">جستجو</button>
+          </form>
+          <table id="products-table"></table>
+          <ul id="page-buttons-container"></ul>
+        </div>
+      </main>
+    </div>
+    <script src="js/sweetalert2@11.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/filterTable.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/products.js"></script>
+  </body>
+</html>
