@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./frontend/**/*.{html,js}"],
+  content: ["./**/*.{html,js}"],
   theme: {
     colors: {
       esther: "var(--color-esther)",

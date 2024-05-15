@@ -1,142 +1,145 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="کلاسیک">
+<html lang="en" data-theme="Classic">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Discount List</title>
     <link rel="stylesheet" href="styles/output.css" />
     <link rel="stylesheet" href="styles/custom.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-esther text-title">
     <header
-      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
-    >
-      <button class="border-l-[1px] pl-5 border-l-esther">
-        <i class="fa-solid fa-bars text-2xl"></i>
-      </button>
-      <a href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
-      <div class="relative theme">
-        <div
-          class="btn-theme cursor-pointer text-lg flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
-        >
-          <i class="fa-solid fa-droplet text-primary"></i
-          ><span class="mr-3 font-light">تم صفحه</span>
-        </div>
-        <div
-          class="theme-list z-10 hidden absolute left-1/2 -translate-x-1/2 w-[120px] p-4 top-[130%] bg-secondary border-primary border-2 rounded-md before:content-[''] before:absolute before:bg-secondary before:border-primary before:w-3 before:h-3 before:-top-2 before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:border-l-2 before:border-t-2"
-        >
-          <ul class="flex flex-col gap-3">
-            <li>
-              <span>کلاسیک</span
-              ><i class="fa-solid fa-droplet text-[#fd3859]"></i>
-            </li>
-            <li>
-              <span>بنفش</span
-              ><i class="fa-solid fa-droplet text-[#bb86fc]"></i>
-            </li>
-            <li>
-              <span>نارنجی</span
-              ><i class="fa-solid fa-droplet text-[#ff5210]"></i>
-            </li>
-            <li>
-              <span>قرمز</span
-              ><i class="fa-solid fa-droplet text-[#EB1616]"></i>
-            </li>
-          </ul>
-        </div>
+    class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+  >
+    <button class="border-r-[1px] pr-5 border-r-esther">
+      <i class="fa-solid fa-bars text-2xl"></i>
+    </button>
+    <a class="text-primary" href="index.html">Web Monster</a>
+    <div class="relative theme">
+      <div
+        class="btn-theme cursor-pointer text-md flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
+      >
+        <span class="mr-1 font-light">Page Theme</span>
+        <i class="fa-solid fa-droplet text-primary"></i>
       </div>
-      <div class="mr-auto">
-        <i class="fa-solid fa-user-tie text-primary ml-2"></i>
-        <span>rayan@gmail.com</span>
+      <div
+        class="theme-list z-10 hidden absolute left-1/2 -translate-x-1/2 w-[120px] p-4 top-[130%] bg-secondary border-primary border-2 rounded-md before:content-[''] before:absolute before:bg-secondary before:border-primary before:w-3 before:h-3 before:-top-2 before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:border-l-2 before:border-t-2"
+      >
+        <ul class="flex flex-col gap-3">
+          <li>
+            <span>Classic</span
+            ><i class="fa-solid fa-droplet text-[#fd3859]"></i>
+          </li>
+          <li>
+            <span>Purple</span
+            ><i class="fa-solid fa-droplet text-[#bb86fc]"></i>
+          </li>
+          <li>
+            <span>Orange</span
+            ><i class="fa-solid fa-droplet text-[#ff5210]"></i>
+          </li>
+          <li>
+            <span>Red</span><i class="fa-solid fa-droplet text-[#EB1616]"></i>
+          </li>
+        </ul>
       </div>
-    </header>
+    </div>
+    <div class="ml-auto">
+      <i class="fa-solid fa-user-tie text-primary ml-2"></i>
+      <span>rayan@gmail.com</span>
+    </div>
+  </header>
     <div class="flex gap-8 pt-24 min-h-screen">
       <aside
-        class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md min-h-full relative"
+        class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
       >
         <div
           class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
         >
-          داشبورد
+          Dashboard
         </div>
         <nav class="mt-20">
           <ul>
             <li class="border-t-[1px]">
               <a href="index.html"
-                ><i class="fa-solid fa-house"></i><span>خانه</span></a
+                ><i class="fa-solid fa-house"></i><span>Home</span></a
               >
             </li>
             <li>
               <a href="newContent.html"
                 ><i class="fa-solid fa-pen-to-square"></i
-                ><span>محتوای جدید</span></a
+                ><span>New Content</span></a
               >
             </li>
             <li>
               <a href="products.html"
-                ><i class="fa-solid fa-store"></i><span>محصولات</span></a
+                ><i class="fa-solid fa-store"></i><span>Products</span></a
               >
             </li>
             <li>
               <a href="blogs.html"
-                ><i class="fa-solid fa-newspaper"></i><span>وبلاگ</span></a
+                ><i class="fa-solid fa-newspaper"></i><span>Blogs</span></a
               >
             </li>
             <li>
               <a href="comments.html"
-                ><i class="fa-solid fa-comments"></i><span>کامنت ها</span></a
+                ><i class="fa-solid fa-comments"></i><span>Comments</span></a
               >
             </li>
             <li>
-              <a href="users.html"
-                ><i class="fa-solid fa-user-group"></i><span>کاربران</span></a
+              <a href="users.html" 
+                ><i class="fa-solid fa-user-group"></i><span>Users</span></a
               >
             </li>
             <li>
               <a href="offs.html" class="active"
                 ><i class="fa-solid fa-dollar-sign mr-2"></i
-                ><span>تخفیف ها</span></a
+                ><span>Discount</span></a
               >
             </li>
           </ul>
         </nav>
       </aside>
       <main class="main-table">
-        <h2>لیست محصولات</h2>
+        <h2>Discount List</h2>
         <div>
           <form class="form-filter">
             <div class="form-group">
               <input type="text" class="form-field" id="id" />
-              <label for="id" class="form-label">شناسه</label>
+              <label for="id" class="form-label">ID</label>
             </div>
             <div class="form-group">
               <input type="text" class="form-field" id="discount-code" />
-              <label for="discount-code" class="form-label">کد تخفیف</label>
+              <label for="discount-code" class="form-label">Discount Code</label>
             </div>
             <div class="form-group">
               <input type="number" class="form-field" id="discount-percent" />
               <label for="discount-percent" class="form-label"
-                >درصد تخفیف</label
+                >Discount Percent</label
               >
             </div>
             <div class="form-group">
               <input type="text" class="form-field" id="product" />
-              <label for="product" class="form-label">محصول</label>
+              <label for="product" class="form-label">Product</label>
             </div>
             <div class="form-group">
               <input type="date" class="form-field" id="register-date" />
-              <label for="register-date" class="form-label">تاریخ ثبت</label>
+              <label for="register-date" class="form-label">Date of Registration</label>
             </div>
             <div class="form-group">
               <input type="date" class="form-field" id="expire-date" />
-              <label for="expire-date" class="form-label">تاریخ انقضا</label>
+              <label for="expire-date" class="form-label">Expiration date</label>
             </div>
 
-            <button id="btn-search" type="submit">جستجو</button>
+            <button id="btn-search" type="submit">Search</button>
           </form>
           <table id="offs-table"></table>
           <ul id="page-buttons-container"></ul>

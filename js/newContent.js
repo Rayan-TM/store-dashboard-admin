@@ -14,17 +14,22 @@ const output = document.querySelector(".multi-img-container");
 const singleUploaderIcon = document.querySelector(".single-upload-icon");
 const singleImageContainer = document.querySelector(".single-image-container");
 const multiImageContainer = document.querySelector(".multi-image-container");
-let singleImage = null;
 const container = document.createElement("div");
-container.className = "relative group single-img-container";
-let file = null;
 const colorPickerContainer = document.querySelector(".color-picker");
 const colorInput = document.querySelector(".color-input");
 const selectColor = document.querySelector(".select-color");
 const colorsContainer = document.querySelector(".colors-container");
+
+container.className = "relative group single-img-container";
+
+let imageContainer = null;
 let colors = null;
 let selectedColors = [];
 let prevColors = null;
+let albums = ""
+let singleImage = null;
+let file = null;
+
 
 const locationSearch = location.search;
 const urlParams = new URLSearchParams(locationSearch);
@@ -32,9 +37,7 @@ const contentID = urlParams.get("id");
 const contentType = urlParams.get("type");
 let myEditor = null;
 
-ClassicEditor.create(document.getElementById("editor"), {
-  language: "fa",
-})
+ClassicEditor.create(document.getElementById("editor"))
   .then((editor) => (myEditor = editor))
   .catch((err) => console.log(err));
 
@@ -46,17 +49,22 @@ function loadContentImage(image) {
   }
 }
 
+
 function loadMultiImage(image) {
+  albums += `,${image}`
+  let randomId = crypto.randomUUID().slice(0, 6);
   output.innerHTML += `
-  <div class="relative group">
-    <img src="${image}" alt="" />
-    <button onclick='removeImage(event)' class="group-hover:flex "><i class="fa-solid fa-xmark"></i></button>
+  <div id='image${randomId}' class="relative group basis-[28%] h-10 bg-cover">
+    <button onclick='removeImage(event)' class="group-hover:flex"><i class="fa-solid fa-xmark"></i></button>
   </div>`;
+
+  imageContainer = document.querySelector(`#image${randomId}`);
+  imageContainer.style.backgroundImage = `url('${image}')`;
 }
 
 async function loadNewContentInputs() {
   if (contentID === null) {
-    submitBtn.innerText = "انتشار";
+    submitBtn.innerText = "ADD";
   } else {
     selectType.classList.add("hidden");
     if (contentType === "product") {
@@ -74,15 +82,14 @@ async function loadNewContentInputs() {
       availableCheckbox.checked = currentProduct.isAvailable;
       commentEnabledCheckBox.checked = currentProduct.allowComment;
       loadContentImage(currentProduct.image);
-      const albumUrls =
-        currentProduct.album !== "[]" &&
-        JSON.parse(`${currentProduct.album}"]`);
 
-      if (albumUrls.length) {
+      if (currentProduct.album.length) {
+        const albumUrls = currentProduct.album.split(",");
         output.classList.replace("hidden", "flex");
         albumUrls.forEach((url) => loadMultiImage(url));
       }
-      prevColors = JSON.parse(currentProduct.colors);
+
+      prevColors = JSON.parse(currentProduct.colors) || [];
       generateColorsInContainer(prevColors);
     } else {
       const [currentBlog] = await fetch(`${baseUrl}/blogs/${contentID}`)
@@ -98,7 +105,7 @@ async function loadNewContentInputs() {
 
       console.log(currentBlog);
     }
-    submitBtn.innerText = "ویرایش";
+    submitBtn.innerText = "Edit";
   }
 }
 
@@ -135,21 +142,15 @@ function checkSelectType(type, contentName = "") {
 
 function addContent() {
   if (selectType.value === "product") {
-    const albumImageTags = document.querySelectorAll(
-      ".multi-img-container > div"
-    );
-    const albumImagesUrls = Array.from(albumImageTags).map((tag) =>
-      tag.children[0].getAttribute("src")
-    );
 
     const newProduct = {
-      name: title.value || "نامشخص",
+      name: title.value || "Unknown",
       price: productPrice.value || 0,
       description: myEditor.getData() || "",
       colors: JSON.stringify(selectedColors) || [],
-      category: selectCategory.value || "بدون دسته بندی",
+      category: selectCategory.value || "Uncategorized",
       image: singleImage?.getAttribute("src") || "",
-      album: JSON.stringify(albumImagesUrls) || [],
+      album: albums.split(',').slice(1).join(',') || "",
       status: statusCheckBox.checked ? 1 : 0,
       isAvailable: availableCheckbox.checked ? 1 : 0,
       allowComment: commentEnabledCheckBox.checked ? 1 : 0,
@@ -163,14 +164,14 @@ function addContent() {
       body: JSON.stringify(newProduct),
     }).then(() => {
       detailsAlert
-        .fire({ text: "محصول با موفقیت اضافه شد.", icon: "success" })
+        .fire({ text: "Product added successfully.", icon: "success" })
         .then(() => location.reload());
     });
   } else {
     const newBlog = {
-      title: title.value || "نامشخص",
+      title: title.value || "Unknown",
       content: myEditor.getData() || "",
-      category: selectCategory.value || "بدون دسته بندی",
+      category: selectCategory.value || "Uncategorized",
       image: singleImage?.getAttribute("src") || "",
       status: statusCheckBox.checked ? 1 : 0,
       allowComment: commentEnabledCheckBox.checked ? 1 : 0,
@@ -186,7 +187,7 @@ function addContent() {
       body: JSON.stringify(newBlog),
     }).then(() => {
       detailsAlert
-        .fire({ text: "مقاله با موفقیت اضافه شد.", icon: "success" })
+        .fire({ text: "Article successfully added.", icon: "success" })
         .then(() => location.reload());
     });
 
@@ -196,42 +197,37 @@ function addContent() {
 
 function updateContent() {
   if (contentType === "product") {
-    const albumImageTags = document.querySelectorAll(
-      ".multi-img-container > div"
-    );
-    const albumImagesUrls = Array.from(albumImageTags).map((tag) =>
-      tag.children[0].getAttribute("src")
-    );
 
     const updatedProduct = {
-      name: title.value || "نامشخص",
-      price: productPrice.value || 0,
+      name: title.value + "" || "Unknown",
+      price: +productPrice.value || 0,
       description: myEditor.getData() || "",
       colors: JSON.stringify(selectedColors) || [],
-      category: selectCategory.value || "بدون دسته بندی",
+      category: selectCategory.value || "Uncategorized",
       image: singleImage?.getAttribute("src") || "",
-      album: JSON.stringify(albumImagesUrls) || [],
+      album: albums.split(',').slice(1).join(',') || "",
       status: statusCheckBox.checked ? 1 : 0,
       isAvailable: availableCheckbox.checked ? 1 : 0,
       allowComment: commentEnabledCheckBox.checked ? 1 : 0,
     };
+
     fetch(`${baseUrl}/products/${contentID}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedProduct),
-    }).then(() => {
+    }).then(() =>
       detailsAlert.fire({
-        text: "محصول با موفقیت ویرایش شد.",
+        text: "The product has been edited successfully.",
         icon: "success",
-      });
-    });
+      })
+    );
   } else {
     const updatedBlog = {
-      title: title.value || "نامشخص",
+      title: title.value || "Unknown",
       content: myEditor.getData() || "",
-      category: selectCategory.value || "بدون دسته بندی",
+      category: selectCategory.value || "Uncategorized",
       image: singleImage?.getAttribute("src") || "",
       status: statusCheckBox.checked ? 1 : 0,
       allowComment: commentEnabledCheckBox.checked ? 1 : 0,
@@ -245,7 +241,7 @@ function updateContent() {
       body: JSON.stringify(updatedBlog),
     }).then(() => {
       detailsAlert.fire({
-        text: "محصول با موفقیت ویرایش شد.",
+        text: "The article has been edited successfully.",
         icon: "success",
       });
     });
@@ -259,9 +255,10 @@ window.addEventListener("load", () => {
   loadNewContentInputs();
 });
 
-submitBtn.addEventListener("click", () => {
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   singleImage = document.querySelector(".single-img-container img");
-  if (submitBtn.innerText === "انتشار") {
+  if (submitBtn.innerText === "ADD") {
     addContent();
   } else {
     updateContent();
@@ -351,9 +348,8 @@ colorInput.addEventListener("input", (e) => {
 //***************** start image uploader  ****************/
 
 function getFileSize(file) {
-  const bytesPerKilobyte = 1000;
-  const fileSize = Math.floor(file?.size / bytesPerKilobyte);
-  console.log(fileSize);
+  const bytesPerMegabyte = 1000000;
+  const fileSize = Math.floor(file?.size / bytesPerMegabyte);
   return fileSize;
 }
 
@@ -361,24 +357,18 @@ function uploadImage(file) {
   if (isUserDeviceCompatible) {
     const fileSize = getFileSize(file);
 
-    if (file.type.match("image") && fileSize < 120) {
-      const fileReader = new FileReader();
-      fileReader.addEventListener("load", (event) => {
-        const fileUrl = event.target;
-        container.innerHTML = "";
-
-        loadContentImage(fileUrl.result);
-      });
-      fileReader.readAsDataURL(file);
-    } else if (fileSize > 120) {
-      alert("سایز فایل نباید بیشتر از 120 کیلوبایت باشد");
+    if (file.type.match("image") && fileSize < 5) {
+      container.innerHTML = "";
+      loadContentImage(`./assets/images/${file.name}`);
+    } else if (fileSize > 5) {
+      alert("The file size should not be more than 5 MB");
       singleUploaderIcon.classList.remove("text-title");
     } else {
-      alert("فایل انتخابی حتما باید عکس باشد");
+      alert("The selected file must be a photo");
       singleUploaderIcon.classList.remove("text-title");
     }
   } else {
-    alert("دستگاه شما سازگاری لازم برای آپلود فایل را ندارد");
+    alert("Your device is not compatible to upload the file");
   }
 }
 
@@ -415,20 +405,16 @@ multiUploader.addEventListener("change", (e) => {
     for (const file of files) {
       const fileSize = getFileSize(file);
       if (!file.type.match("image")) continue;
-      if (fileSize > 120) {
-        alert(`سایز عکس ${file.name} بزرگتر از 120 کیلوبایت است`);
+      if (fileSize > 5) {
+        alert(`${file.name} Image size is larger than 5 MB`);
       } else {
         output.classList.replace("hidden", "flex");
-        const reader = new FileReader();
-        reader.addEventListener("load", (event) => {
-          const picFile = event.target;
-          loadMultiImage(picFile.result);
-        });
-        reader.readAsDataURL(file);
+        console.log(file.name);
+        loadMultiImage(`./assets/images/${file.name}`);
       }
     }
   } else {
-    alert("دستگاه شما سازگاری لازم برای آپلود فایل را ندارد");
+    alert("Your device is not compatible to upload the file");
   }
 });
 

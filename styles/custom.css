@@ -1,8 +1,7 @@
 @import url("./fonts.css");
 
 body {
-  direction: rtl;
-  font-family: "iranyekan";
+  font-family: "Poppins", sans-serif;
 }
 
 .content-quality-circle {

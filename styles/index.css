@@ -40,7 +40,7 @@
   }
 
   main:not(.home, .new-content) {
-    @apply h-fit bg-secondary rounded-md w-full ml-8;
+    @apply h-fit bg-secondary rounded-md w-full mr-8;
   }
 
   .main-table .form-filter {
@@ -152,7 +152,7 @@
 
   .multi-img-container button,
   .single-img-container button {
-    @apply absolute top-0 right-0 items-center justify-center hidden bg-primary text-white rounded-full p-[2px];
+    @apply absolute -top-1 -right-1 items-center justify-center hidden bg-primary text-white rounded-full px-[3px] py-[2px];
   }
 
   .input-error {
@@ -184,7 +184,7 @@
   }
 
   #page-buttons-container li {
-    @apply px-5 py-3 first:rounded-s-full last:rounded-e-full bg-esther text-title;
+    @apply px-5 py-3 first:rounded-s-full last:rounded-e-full bg-esther text-title cursor-pointer;
   }
 
   #page-buttons-container li.active {
@@ -193,28 +193,28 @@
 }
 
 @layer base {
-  html[data-theme="کلاسیک"] {
+  html[data-theme="Classic"] {
     --color-esther: #ebeff5;
     --color-secondary: #ffffff;
     --color-primary: #fd3859;
     --color-title: #2a2a2a;
   }
 
-  html[data-theme="بنفش"] {
+  html[data-theme="Purple"] {
     --color-esther: #121212;
     --color-secondary: #1e1e1e;
     --color-primary: #bb86fc;
     --color-title: #ffffff;
   }
 
-  html[data-theme="نارنجی"] {
+  html[data-theme="Orange"] {
     --color-esther: #55221f;
     --color-secondary: #1e1e1e;
     --color-primary: #ff5210;
     --color-title: #ffffff;
   }
 
-  html[data-theme="قرمز"] {
+  html[data-theme="Red"] {
     --color-esther: #111;
     --color-secondary: #191c24;
     --color-primary: #eb1616;

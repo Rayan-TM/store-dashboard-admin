@@ -32,9 +32,9 @@ function getTime() {
 
 const mainAlert = Swal.mixin({
   icon: "question",
-  confirmButtonText: "حذف",
+  confirmButtonText: "Delete",
   showCancelButton: true,
-  cancelButtonText: "لغو",
+  cancelButtonText: "Cancel",
   customClass: {
     confirmButton: "bg-primary text-white py-2 px-4 rounded-md",
     cancelButton: "bg-esther text-title py-2 px-4 rounded-md",
@@ -45,7 +45,7 @@ const mainAlert = Swal.mixin({
 
 const detailsAlert = Swal.mixin({
   icon: "info",
-  confirmButtonText: "باشه",
+  confirmButtonText: "OK",
   customClass: {
     container: "main-table",
     confirmButton: "bg-primary text-white py-2 px-4 rounded-md",
@@ -86,7 +86,10 @@ themeItems.forEach((list) =>
   })
 );
 
-window.addEventListener(
-  "load",
-  () => (document.documentElement.dataset.theme = localStorage.getItem("theme"))
-);
+window.addEventListener("load", () => {
+  const currentTheme = localStorage.getItem("theme");
+  let documentTheme = document.documentElement.dataset.theme;
+  currentTheme
+    ? (documentTheme = localStorage.getItem("theme"))
+    : (documentTheme = "Classic");
+});

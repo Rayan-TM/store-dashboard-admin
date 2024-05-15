@@ -28,13 +28,13 @@ function generateComments(comments) {
     commentsTable.insertAdjacentHTML(
       "beforeend",
       `<tr class="text-sm">
-        <th>شناسه</th>
-        <th>نام کاربر</th>
-        <th>محصول/مقاله</th>
-        <th>کامنت</th>
-        <th>تاریخ</th>
-        <th>ساعت</th>
-        <th>عملیات</th>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Product/Article</th>
+        <th>Comment</th>
+        <th>Date</th>
+        <th>Hour</th>
+        <th>Actions</th>
       </tr>`
     );
     comments.forEach((comment) => {
@@ -56,20 +56,20 @@ function generateComments(comments) {
                 <button onclick=answerComment(${JSON.stringify([
                   comment.isProduct,
                   comment.id,
-                ])}) title="پاسخ"><i class="fa-solid fa-comment-dots"></i></button>
+                ])}) title="Reply"><i class="fa-solid fa-comment-dots"></i></button>
                 <button onclick="confirmComment(${comment.id}, ${
           comment.isConfirmed
-        })" title="${comment.isConfirmed ? "رد" : "تایید"}">${
+        })" title="${comment.isConfirmed ? "reject" : "accept"}">${
           comment.isConfirmed
             ? '<i class="fa-solid fa-xmark"></i>'
             : '<i class="fa-solid fa-circle-check"></i>'
         }</button>
                 <button onclick="removeComment(${
                   comment.id
-                })" title="حذف"><i class="fa-solid fa-trash-can"></i></button>
+                })" title="Delete"><i class="fa-solid fa-trash-can"></i></button>
                 <button onclick="editComment(${comment.id}, '${
           comment.content
-        }')" title="ویرایش"><i class="fa-solid fa-pencil"></i></button>
+        }')" title="Edit"><i class="fa-solid fa-pencil"></i></button>
               </div>
             </td>`
       );
@@ -79,7 +79,7 @@ function generateComments(comments) {
   } else {
     commentsTable.style.border = "none";
 
-    commentsTable.innerHTML = "نظری یافت نشد";
+    commentsTable.innerHTML = "No comment found";
   }
 }
 
@@ -90,13 +90,13 @@ function answerComment([isProduct, commentID]) {
       const prevCommentData = data[0];
       mainAlert
         .fire({
-          title: "افزودن پاسخ برای نظر کاربر",
+          title: "Add a reply to a user's comment",
           input: "textarea",
           icon: false,
-          confirmButtonText: "افزدون",
+          confirmButtonText: "ADD",
           preConfirm: (content) => {
             if (!content) {
-              Swal.showValidationMessage("لطفا فیلد پاسخ را پر کنید");
+              Swal.showValidationMessage("Please fill in the answer field");
             }
           },
         })
@@ -137,7 +137,7 @@ function confirmComment(commentID, prevConfirmState) {
 function removeComment(commentID) {
   mainAlert
     .fire({
-      title: "آیا از حذف کامنت مطمئن هستید؟",
+      title: "Are you sure to delete the comment?",
     })
     .then(
       (result) =>
@@ -146,7 +146,7 @@ function removeComment(commentID) {
           method: "DELETE",
         }).then(() => {
           getComments();
-          detailsAlert.fire({ text: "کامنت حذف شد." });
+          detailsAlert.fire({ text: "The comment was deleted." });
         })
     );
 }
@@ -154,14 +154,14 @@ function removeComment(commentID) {
 function editComment(commentID, commentContent) {
   mainAlert
     .fire({
-      title: "ویرایش نظر کاربر",
+      title: "Edit user comments",
       input: "textarea",
       inputValue: commentContent,
       icon: false,
-      confirmButtonText: "ویرایش",
+      confirmButtonText: "Edit",
       preConfirm: (content) => {
         if (!content) {
-          Swal.showValidationMessage("لطفا فیلد کامنت را پر کنید");
+          Swal.showValidationMessage("Please fill in the comment field");
         }
       },
     })
@@ -179,7 +179,7 @@ function editComment(commentID, commentContent) {
           body: JSON.stringify(updatedContent),
         }).then(() => {
           getComments();
-          detailsAlert.fire({ text: "کامنت ویرایش شد." });
+          detailsAlert.fire({ text: "The comment was edited." });
         });
       }
     });

@@ -20,7 +20,7 @@ function checkInputsValidation() {
 }
 
 async function loadCategoryBox(isProduct, contentName) {
-  selectCategory.innerHTML = "<option value=''>بدون دسته بندی</option>";
+  selectCategory.innerHTML = "<option value=''>Uncategorized</option>";
   const allCategories = await fetch(`${baseUrl}/category/${isProduct}`)
     .then((res) => res.json())
     .then((data) => data);

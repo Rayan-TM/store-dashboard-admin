@@ -27,14 +27,14 @@ function generateProducts(products) {
     productsTable.insertAdjacentHTML(
       "beforeend",
       `<tr class="text-sm">
-    <th>شناسه</th>
-    <th>عکس</th>
-    <th>نام</th>
-    <th>قیمت</th>
-    <th>موجودی</th>
-    <th>دسته بندی</th>
-    <th>وضعیت</th>
-    <th>عملیات</th>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Inventory</th>
+    <th>Category</th>
+    <th>Status</th>
+    <th>Actions</th>
   </tr>`
     );
     const productsFragment = $.createDocumentFragment();
@@ -48,19 +48,19 @@ function generateProducts(products) {
           <img src="${product.image || "./assets/default.png"}" alt="" />
         </td>
         <td>${product.name}</td>
-        <td>${product.price ? product.price + " تومان" : "رایگان"}</td>
-        <td>${product.isAvailable ? "موجود" : "ناموجود"}</td>
+        <td>${product.price ? product.price + "$" : "Free"}</td>
+        <td>${product.isAvailable ? "Available" : "Unavailable"}</td>
         <td>${product.category}</td>
-        <td>${product.status ? "فعال" : "غیرفعال"}</td>
+        <td>${product.status ? "Active" : "Inactive"}</td>
         <td class="actions">
           <div>
-            <button><a title="نمایش"><i class="fa-solid fa-eye"></i></a></button>
+            <button><a title="Show"><i class="fa-solid fa-eye"></i></a></button>
             <button onclick=removeProduct(${
               product.id
-            }) title="حذف"><i class="fa-solid fa-trash-can"></i></button>
+            }) title="Delete"><i class="fa-solid fa-trash-can"></i></button>
             <button><a href="newContent.html?id=${
               product.id
-            }&type=product" title="ویرایش"><i class="fa-solid fa-pencil"></i></a></button>
+            }&type=product" title="Edit"><i class="fa-solid fa-pencil"></i></a></button>
           </div>
         </td>`
       );
@@ -70,14 +70,14 @@ function generateProducts(products) {
     console.log("all products =>", products);
   } else {
     productsTable.style.border = "none";
-    productsTable.innerHTML = "محصولی یافت نشد";
+    productsTable.innerHTML = "No products found";
   }
 }
 
 function removeProduct(productID) {
   mainAlert
     .fire({
-      text: "آیا از حذف محصول مطمئن هستید؟",
+      text: "Are you sure to delete the product?",
     })
     .then(
       (result) =>
@@ -86,7 +86,7 @@ function removeProduct(productID) {
           method: "DELETE",
         }).then(() => {
           getProducts();
-          detailsAlert.fire({ text: "محصول حذف شد." });
+          detailsAlert.fire({ text: "The product has been removed." });
         })
     );
 }

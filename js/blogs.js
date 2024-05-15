@@ -27,14 +27,14 @@ function generateBlog(blogs) {
     blogsTable.insertAdjacentHTML(
       "beforeend",
       `<tr class="text-sm">
-        <th>شناسه</th>
-        <th>عکس</th>
-        <th>نام</th>
-        <th>تاریخ</th>
-        <th>ساعت</th>
-        <th>دسته بندی</th>
-        <th>وضعیت</th>
-        <th>عملیات</th>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Hour</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Actions</th>
       </tr>`
     );
 
@@ -52,16 +52,16 @@ function generateBlog(blogs) {
             <td>${blog.date}</td>
             <td>${blog.hour}</td>
             <td>${blog.category}</td>
-            <td>${blog.status ? "فعال" : "غیرفعال"}</td>
+            <td>${blog.status ? "Active" : "Inactive"}</td>
             <td class="actions">
                 <div>
-                  <button><a title="نمایش"><i class="fa-solid fa-eye"></i></a></button>
+                  <button><a title="Show"><i class="fa-solid fa-eye"></i></a></button>
                   <button onclick=removeBlog(${
                     blog.id
-                  }) title="حذف"><i class="fa-solid fa-trash-can"></i></button>
+                  }) title="Delete"><i class="fa-solid fa-trash-can"></i></button>
                   <button><a href="newContent.html?id=${
                     blog.id
-                  }&type=blog" title="ویرایش"><i class="fa-solid fa-pencil"></i></a></button>
+                  }&type=blog" title="Edit"><i class="fa-solid fa-pencil"></i></a></button>
                 </div>
               </td>`
       );
@@ -71,14 +71,14 @@ function generateBlog(blogs) {
   } else {
     blogsTable.style.border = "none";
 
-    blogsTable.innerHTML = "مقاله ای یافت نشد";
+    blogsTable.innerHTML = "No article found";
   }
 }
 
 function removeBlog(blogID) {
   mainAlert
     .fire({
-      text: "آیا از حذف مقاله مطمئن هستید؟",
+      text: "Are you sure to delete the article?",
     })
     .then(
       (result) =>
@@ -87,7 +87,7 @@ function removeBlog(blogID) {
           method: "DELETE",
         }).then(() => {
           getBlogs();
-          detailsAlert.fire({ text: "مقاله حذف شد." });
+          detailsAlert.fire({ text: "The article was deleted." });
         })
     );
 }

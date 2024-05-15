@@ -47,13 +47,13 @@ function generateUsers(users) {
     usersTable.insertAdjacentHTML(
       "beforeend",
       `<tr class="text-sm">
-            <th>شناسه</th>
-            <th>نام و نام خانوادگی</th>
-            <th>نام کاربری</th>
-            <th>رمز عبور</th>
-            <th>شماره تماس</th>
-            <th>ایمیل</th>
-            <th>عملیات</th>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Actions</th>
           </tr>`
     );
     users.forEach((user) => {
@@ -71,13 +71,13 @@ function generateUsers(users) {
               <div>
                 <button onclick=showUserDetails(${JSON.stringify(
                   user
-                )}) title="نمایش جزییات"><i class="fa-solid fa-circle-info"></i></button>
+                )}) title="Show Details"><i class="fa-solid fa-circle-info"></i></button>
                 <button onclick="removeUser(${
                   user.id
-                })" title="حذف"><i class="fa-solid fa-trash-can"></i></button>
+                })" title="Delete"><i class="fa-solid fa-trash-can"></i></button>
                 <button onclick=editUser(${JSON.stringify(
                   user
-                )}) title="ویرایش"><i class="fa-solid fa-pencil"></i></button>
+                )}) title="Edit"><i class="fa-solid fa-pencil"></i></button>
               </div>
              </td>`
       );
@@ -87,7 +87,7 @@ function generateUsers(users) {
   } else {
     usersTable.style.border = "none";
 
-    usersTable.innerHTML = "کاربری یافت نشد";
+    usersTable.innerHTML = "User not found";
   }
 }
 
@@ -96,14 +96,14 @@ function showUserDetails(user) {
     text: "test",
     html: `<table>
     <tr>
-      <th>شهر</th>
-      <th>استان</th>
-      <th>جنسیت</th>
+      <th>City</th>
+      <th>Province</th>
+      <th>Gender</th>
     </tr>
     <tr>
       <td>${user.city}</td>
       <td>${user.province}</td>
-      <td>${user.gender === "male" ? "مرد" : "زن"}</td>
+      <td>${user.gender}</td>
   </table>`,
   });
 }
@@ -111,7 +111,7 @@ function showUserDetails(user) {
 function removeUser(userID) {
   mainAlert
     .fire({
-      text: "آیا از حذف کاربر مطمئن هستید؟",
+      text: "Are you sure you want to delete the user?",
     })
     .then(
       (result) =>
@@ -119,14 +119,14 @@ function removeUser(userID) {
         fetch(`${baseUrl}/users/${userID}`, {
           method: "DELETE",
         }).then(() => {
-          getUsers()
-          detailsAlert.fire({text: "کاربر حذف شد."})
+          getUsers();
+          detailsAlert.fire({ text: "User deleted." });
         })
     );
 }
 
 function filterCities() {
-  city.innerHTML = `<option value="">شهر</option>`;
+  city.innerHTML = `<option value="">City</option>`;
   city.disabled = false;
 
   const provinceID = JSON.parse(province.value).id;
@@ -149,64 +149,64 @@ async function editUser(user) {
 
   mainAlert
     .fire({
-      title: "ویرایش کاربر",
+      title: "Edit user",
       icon: false,
-      confirmButtonText: "ویرایش",
+      confirmButtonText: "Edit",
       html: `<form class="form-edit form-filter flex flex-wrap gap-3 mt-10">
     <div class="form-group mb-5">
       <input type="text" class="form-field" id="formFirstname" value="${
         user.firstname
       }"/>
       <span class="input-error" id="firstnameError"></span>
-      <label for="formFirstname" class="form-label">نام</label>
+      <label for="formFirstname" class="form-label">First Name</label>
     </div>
     <div class="form-group mb-5">
       <input type="text" class="form-field" id="formLastname" value="${
         user.lastname
       }"/>
       <span class="input-error" id="lastnameError"></span>
-      <label for="formLastname" class="form-label">نام خانوادگی</label>
+      <label for="formLastname" class="form-label">Last Name</label>
     </div>
     <div class="form-group mb-5">
       <input type="text" class="form-field" id="formUsername" value="${
         user.username
       }"/>
       <span class="input-error" id="usernameError"></span>
-      <label for="formUsername" class="form-label">نام کاربری</label>
+      <label for="formUsername" class="form-label">Username</label>
     </div>
     <div class="form-group mb-5">
       <input type="text" class="form-field" id="formPassword" value="${
         user.password
       }"/>
       <span class="input-error" id="passwordError"></span>
-      <label for="formPassword" class="form-label">رمزعبور</label>
+      <label for="formPassword" class="form-label">Password</label>
     </div>
     <div class="form-group mb-5">
       <input type="text" class="form-field" id="formPhone" value="${
         user.phone
       }"/>
       <span class="input-error" id="phoneError"></span>
-      <label for="formPhone" class="form-label">شماره تماس</label>
+      <label for="formPhone" class="form-label">Phone Number</label>
     </div>
     <div class="form-group mb-5">
       <input type="text" class="form-field" id="formEmail" value="${
         user.email
       }"/>
       <span class="input-error" id="emailError"></span>
-      <label for="formEmail" class="form-label">ایمیل</label>
+      <label for="formEmail" class="form-label">Email</label>
     </div>
     <div class="form-group mb-5">
       <select id="formCity" class="form-field" required>
-        <option value="">شهر</option>
+        <option value="">City</option>
         <option value=${user.city} selected>${user.city}</option>
       </select>
       <span class="input-error" id="cityError"></span>
-      <label for="formCity" class="form-label invisible">شهر</label>
+      <label for="formCity" class="form-label invisible">City</label>
     </div>
 
     <div class="form-group mb-5">
       <select id="formProvince" class="form-field" required onchange=filterCities()>
-        <option value="">استان</option>
+        <option value="">Province</option>
         ${provinces.map(
           (province) =>
             `<option ${
@@ -215,22 +215,22 @@ async function editUser(user) {
         )}
       </select>
       <span class="input-error" id="provinceError"></span>
-      <label for="formProvince" class="form-label invisible">استان</label>
+      <label for="formProvince" class="form-label invisible">Province</label>
     </div>
 
     <div class="form-group mb-5">
       <select id="formGender" class="form-field" required>
-        <option value="">جنسیت</option>
+        <option value="">Gender</option>
         ${["male", "female"].map(
           (gender) =>
-            `<option ${gender === user.gender && "selected"} value=${gender}>${
-              gender === "male" ? "مرد" : "زن"
-            }</option>`
+            `<option ${
+              gender === user.gender && "selected"
+            } value=${gender}>${gender}</option>`
         )}
       </select>
       <span class="input-error" id="genderError"></span>
 
-      <label for="formGender" class="form-label invisible">جنسیت</label>
+      <label for="formGender" class="form-label invisible">Gender</label>
     </div>
   </form>`,
       didOpen: () => {
@@ -270,7 +270,7 @@ async function editUser(user) {
         const hasInputErrors = inputs.some((input) => input.innerText !== "");
 
         if (hasInputErrors) {
-          Swal.showValidationMessage("لطفا فیلد پاسخ را پر کنید");
+          Swal.showValidationMessage("Please fill in the answer field");
         }
       },
     })
@@ -295,9 +295,9 @@ async function editUser(user) {
           body: JSON.stringify(updatedUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            getUsers()
-            detailsAlert.fire({text: "کاربر ویرایش شد."})
+          .then(() => {
+            getUsers();
+            detailsAlert.fire({ text: "The user was edited." });
           });
       }
     });

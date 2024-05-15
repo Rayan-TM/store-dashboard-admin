@@ -28,13 +28,13 @@ function generateOffs(offs) {
     offsTable.insertAdjacentHTML(
       "beforeend",
       `<tr class="text-sm">
-        <th>شناسه</th>
-        <th>کد تخفیف</th>
-        <th>درصد تخفیف</th>
-        <th>تاریخ ثبت</th>
-        <th>تاریخ انقضا</th>
-        <th>استفاده شده برای محصول</th>
-        <th>عملیات</th>
+        <th>ID</th>
+        <th>Discount Code</th>
+        <th>Discount Percent</th>
+        <th>Date of Registration</th>
+        <th>Expiration date</th>
+        <th>Used for product</th>
+        <th>Actions</th>
       </tr>`
     );
     offs.forEach((off) => {
@@ -44,7 +44,7 @@ function generateOffs(offs) {
         "beforeend",
         `<td>${off.id}</td>
             <td>${off.discount_code}</td>
-            <td>${off.discount_percent} درصد</td>
+            <td>${off.discount_percent} %</td>
             <td>${off.register_date}</td>
             <td>${off.expire_date}</td>
             <td>${off.product_ID}</td>
@@ -52,14 +52,14 @@ function generateOffs(offs) {
               <div>
                 <button onclick="changeConfirmState(${off.id}, ${
           off.isConfirmed
-        })" title="${off.isConfirmed ? "رد" : "تایید"}">${
+        })" title="${off.isConfirmed ? "Reject" : "Confirm"}">${
           off.isConfirmed
             ? '<i class="fa-solid fa-xmark"></i>'
             : '<i class="fa-solid fa-circle-check"></i>'
         }</button>
                 <button onclick="removeOff(${
                   off.id
-                })" title="حذف"><i class="fa-solid fa-trash-can"></i></button>
+                })" title="Delete"><i class="fa-solid fa-trash-can"></i></button>
               </div>
             </td>`
       );
@@ -68,7 +68,7 @@ function generateOffs(offs) {
     offsTable.appendChild(offsFragment);
   } else {
     offsTable.style.border = "none";
-    offsTable.innerHTML = "تخفیفی یافت نشد";
+    offsTable.innerHTML = "No discount found";
   }
 }
 
@@ -82,7 +82,7 @@ function changeConfirmState(offID, prevConfirmState) {
 function removeOff(offID) {
   mainAlert
     .fire({
-      text: "آیا از حذف تخفیف مطمئن هستید؟",
+      text: "Are you sure about removing the discount?",
     })
     .then(
       (result) =>
@@ -91,7 +91,7 @@ function removeOff(offID) {
           method: "DELETE",
         }).then(() => {
           getOffs();
-          detailsAlert.fire({ text: "تخفیف حذف شد." });
+          detailsAlert.fire({ text: "Discount removed." });
         })
     );
 }
