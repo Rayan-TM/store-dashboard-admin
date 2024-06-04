@@ -17,13 +17,13 @@
   </head>
   <body class="bg-esther text-title">
     <header
-      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+      class="flex fixed top-0 w-full z-50 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
     >
       <button class="border-r-[1px] pr-5 border-r-esther">
         <i class="fa-solid fa-bars text-2xl"></i>
       </button>
       <a class="text-primary" href="index.html">Web Monster</a>
-      <div class="relative theme">
+      <div class="relative theme sm:hidden">
         <div
           class="btn-theme cursor-pointer text-md flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
         >
@@ -52,62 +52,62 @@
           </ul>
         </div>
       </div>
-      <div class="ml-auto">
+      <div class="ml-auto flex items-center gap-2 xs:hidden">
         <i class="fa-solid fa-user-tie text-primary ml-2"></i>
         <span>rayan@gmail.com</span>
       </div>
     </header>
     <div class="flex gap-8 pt-24 min-h-screen">
       <aside
-        class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
+      class="w-[250px] sm:overflow-hidden sm:w-[50px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
+    >
+      <div
+        class="sidebar-title sm:hidden bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
       >
-        <div
-          class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
-        >
-          Dashboard
-        </div>
-        <nav class="mt-20">
-          <ul>
-            <li class="border-t-[1px]">
-              <a href="index.html"
-                ><i class="fa-solid fa-house"></i><span>Home</span></a
-              >
-            </li>
-            <li>
-              <a href="newContent.html"
-                ><i class="fa-solid fa-pen-to-square"></i
-                ><span>New Content</span></a
-              >
-            </li>
-            <li>
-              <a href="products.html"
-                ><i class="fa-solid fa-store"></i><span>Products</span></a
-              >
-            </li>
-            <li>
-              <a href="blogs.html"
-                ><i class="fa-solid fa-newspaper"></i><span>Blogs</span></a
-              >
-            </li>
-            <li>
-              <a href="comments.html"
-                ><i class="fa-solid fa-comments"></i><span>Comments</span></a
-              >
-            </li>
-            <li>
-              <a href="users.html" class="active"
-                ><i class="fa-solid fa-user-group"></i><span>Users</span></a
-              >
-            </li>
-            <li>
-              <a href="offs.html"
-                ><i class="fa-solid fa-dollar-sign mr-2"></i
-                ><span>Discount</span></a
-              >
-            </li>
-          </ul>
-        </nav>
-      </aside>
+        Dashboard
+      </div>
+      <nav class="mt-20">
+        <ul>
+          <li class="border-t-[1px]">
+            <a href="index.html" 
+              ><i class="fa-solid fa-house"></i><span>Home</span></a
+            >
+          </li>
+          <li>
+            <a href="newContent.html"
+              ><i class="fa-solid fa-pen-to-square"></i
+              ><span>New Content</span></a
+            >
+          </li>
+          <li>
+            <a href="products.html"
+              ><i class="fa-solid fa-store"></i><span>Products</span></a
+            >
+          </li>
+          <li>
+            <a href="blogs.html"
+              ><i class="fa-solid fa-newspaper"></i><span>Blogs</span></a
+            >
+          </li>
+          <li>
+            <a href="comments.html"
+              ><i class="fa-solid fa-comments"></i><span>Comments</span></a
+            >
+          </li>
+          <li>
+            <a href="users.html" class="active"
+              ><i class="fa-solid fa-user-group"></i><span>Users</span></a
+            >
+          </li>
+          <li>
+            <a href="offs.html"
+              ><i class="fa-solid fa-dollar-sign mr-2"></i
+              ><span>Discount</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </aside>
       <main class="main-table">
         <h2>Users List</h2>
         <div>
@@ -124,11 +124,11 @@
               <input type="text" class="form-field" id="password" />
               <label for="password" class="form-label">Password</label>
             </div>
-            <div class="form-group">
+            <div class="form-group phone">
               <input type="text" class="form-field" id="phone" />
               <label for="phone" class="form-label">Phone Number</label>
             </div>
-            <div class="form-group">
+            <div class="form-group email">
               <input type="text" class="form-field" id="email" />
               <label for="email" class="form-label">Email</label>
             </div>

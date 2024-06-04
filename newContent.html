@@ -17,13 +17,13 @@
   </head>
   <body class="bg-esther text-title">
     <header
-      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+      class="flex fixed top-0 w-full z-50 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
     >
       <button class="border-r-[1px] pr-5 border-r-esther">
         <i class="fa-solid fa-bars text-2xl"></i>
       </button>
       <a class="text-primary" href="index.html">Web Monster</a>
-      <div class="relative theme">
+      <div class="relative theme sm:hidden">
         <div
           class="btn-theme cursor-pointer text-md flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
         >
@@ -52,17 +52,17 @@
           </ul>
         </div>
       </div>
-      <div class="ml-auto">
+      <div class="ml-auto flex items-center gap-2 xs:hidden">
         <i class="fa-solid fa-user-tie text-primary ml-2"></i>
         <span>rayan@gmail.com</span>
       </div>
     </header>
     <div class="flex gap-8 pt-24 min-h-screen">
       <aside
-        class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
+        class="w-[250px] sm:overflow-hidden sm:w-[50px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
       >
         <div
-          class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
+          class="sidebar-title sm:hidden bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
         >
           Dashboard
         </div>
@@ -108,230 +108,238 @@
           </ul>
         </nav>
       </aside>
-      <main class="flex-[4] new-content h-fit bg-secondary rounded-md w-full">
-        <h2>Add new content</h2>
-        <form class="mt-5 p-4 form-filter">
-          <div class="flex flex-col gap-3 mr-2">
-            <label for="title" class="font-bold text-sm">Title</label>
+      <div class="flex flex-1 w-[100px] lg:flex-wrap-reverse lg:items-end items-start">
+        <main
+          class="flex-[4] mr-8 new-content h-fit bg-secondary rounded-md w-full"
+        >
+          <h2>Add new content</h2>
+          <form class="mt-5 p-4 form-filter">
+            <div class="flex flex-col gap-3 mr-2">
+              <label for="title" class="font-bold text-sm">Title</label>
+              <input
+                type="text"
+                id="title"
+                class="focus:border-primary border-2 border-esther rounded-md outline-none px-4 py-2 transition-[border] w-2/3"
+              />
+            </div>
+            <hr class="mt-5 text-esther" />
+            <h3 class="font-bold my-5">Description</h3>
+            <hr class="h-1 bg-title" />
+            <div id="editor"></div>
+            <div class="border-t-[1px] mt-5 border-t-esther">
+              <h3 class="mt-5 mb-8 font-bold">Content Type</h3>
+              <div class="flex lg:flex-wrap gap-8">
+                <div class="form-group">
+                  <select id="post-type" class="form-field">
+                    <option value="">Type *</option>
+                    <option value="product">Product</option>
+                    <option value="blog">Blog</option>
+                  </select>
+                  <label for="post-type" class="form-label invisible"
+                    >Type *</label
+                  >
+                </div>
+                <div class="form-group">
+                  <select id="category" class="form-field" required>
+                    <option value="">Category</option>
+                  </select>
+                  <label for="category" class="form-label invisible"
+                    >Category</label
+                  >
+                </div>
+                <div class="form-group mb-8 price-container">
+                  <input type="text" class="form-field" id="product-price" />
+                  <label for="product-price" class="form-label"
+                    >Product Price <span class="text-[10px]">$</span></label
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              id="status-container"
+              class="border-t-[1px] mt-5 border-t-esther"
+            >
+              <h3 class="my-5 font-bold">Status</h3>
+              <div class="status-container flex lg:flex-wrap gap-8">
+                <div>
+                  <label class="flex justify-start gap-2 mb-2" for="status">
+                    <div class="checkbox">
+                      <input type="checkbox" id="status" checked />
+                      <svg viewBox="0 0 21 18" class="check">
+                        <symbol id="tick-path" viewBox="0 0 21 18">
+                          <path
+                            d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                            fill="none"
+                            stroke-width="2.25"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </symbol>
+                        <defs>
+                          <mask id="tick">
+                            <use class="tick mask" href="#tick-path" />
+                          </mask>
+                        </defs>
+                        <use
+                          class="tick"
+                          href="#tick-path"
+                          stroke="currentColor"
+                        />
+                        <path
+                          fill="white"
+                          mask="url(#tick)"
+                          d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
+                        />
+                      </svg>
+                      <svg class="lines" viewBox="0 0 11 11">
+                        <path d="M5.88086 5.89441L9.53504 4.26746" />
+                        <path d="M5.5274 8.78838L9.45391 9.55161" />
+                        <path d="M3.49371 4.22065L5.55387 0.79198" />
+                      </svg>
+                    </div>
+                    <span>Active</span>
+                  </label>
+                  <span class="text-xs">Is the content active?</span>
+                </div>
+                <div>
+                  <label class="flex gap-2 mb-2" for="available-checkbox">
+                    <div class="checkbox">
+                      <input type="checkbox" id="available-checkbox" checked />
+                      <svg viewBox="0 0 21 18" class="check">
+                        <symbol id="tick-path2" viewBox="0 0 21 18">
+                          <path
+                            d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                            fill="none"
+                            stroke-width="2.25"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </symbol>
+                        <defs>
+                          <mask id="tick2">
+                            <use class="tick mask" href="#tick-path2" />
+                          </mask>
+                        </defs>
+                        <use
+                          class="tick"
+                          href="#tick-path2"
+                          stroke="currentColor"
+                        />
+                        <path
+                          fill="white"
+                          mask="url(#tick2)"
+                          d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
+                        />
+                      </svg>
+                      <svg class="lines" viewBox="0 0 11 11">
+                        <path d="M5.88086 5.89441L9.53504 4.26746" />
+                        <path d="M5.5274 8.78838L9.45391 9.55161" />
+                        <path d="M3.49371 4.22065L5.55387 0.79198" />
+                      </svg>
+                    </div>
+                    <span>Available</span>
+                  </label>
+                  <span class="text-xs">Is the product available?</span>
+                </div>
+                <div>
+                  <label class="flex gap-2 mb-2" for="comment-enabled">
+                    <div class="checkbox">
+                      <input type="checkbox" id="comment-enabled" />
+                      <svg viewBox="0 0 21 18" class="check">
+                        <symbol id="tick-path" viewBox="0 0 21 18">
+                          <path
+                            d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                            fill="none"
+                            stroke-width="2.25"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </symbol>
+                        <defs>
+                          <mask id="tick3">
+                            <use class="tick mask" href="#tick-path" />
+                          </mask>
+                        </defs>
+                        <use
+                          class="tick"
+                          href="#tick-path"
+                          stroke="currentColor"
+                        />
+                        <path
+                          fill="white"
+                          mask="url(#tick3)"
+                          d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
+                        />
+                      </svg>
+                      <svg class="lines" viewBox="0 0 11 11">
+                        <path d="M5.88086 5.89441L9.53504 4.26746" />
+                        <path d="M5.5274 8.78838L9.45391 9.55161" />
+                        <path d="M3.49371 4.22065L5.55387 0.79198" />
+                      </svg>
+                    </div>
+                    <span>Ability to post comments</span>
+                  </label>
+                  <span class="text-xs max-w-52 block"
+                    >If it is disabled, it is not possible to register a comment
+                    for the content
+                  </span>
+                </div>
+              </div>
+            </div>
+            <button
+              id="submit-btn"
+              class="bg-primary p-2 w-28 block text-white rounded-md mt-12 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            ></button>
+          </form>
+        </main>
+        <aside
+          class="flex-1 flex gap-x-8 flex-col lg:flex-row lg:justify-between md:flex-wrap rounded-md mr-8 w-[200px] text-center text-xs"
+        >
+          <div class="uploader-container single-image-container">
+            <i
+              class="fa-solid fa-cloud-arrow-up text-7xl single-upload-icon"
+            ></i>
+            <span>Drag and drop your file here or</span>
+            <label for="single-img"> Upload Photo </label>
+            <input
+              class="hidden"
+              type="file"
+              id="single-img"
+              accept="image/jpeg, image/png, image/jpg, image/webp"
+            />
+            <span>File size limit: 5 MB</span>
+          </div>
+          <div class="uploader-container multi-image-container">
+            <i class="fa-brands fa-dropbox text-7xl"></i>
+            <div class="multi-img-container hidden w-full"></div>
+            <span>Upload multiple photos</span>
+            <label for="multi-img"> Upload Photo </label>
+            <input
+              multiple
+              class="hidden"
+              type="file"
+              id="multi-img"
+              accept="image/*"
+            />
+            <span>File size limit: 5 MB</span>
+          </div>
+          <div class="uploader-container color-picker">
+            <i class="fa-solid fa-palette text-7xl"></i>
+            <span>Choose product colors</span>
             <input
               type="text"
-              id="title"
-              class="focus:border-primary border-2 border-esther rounded-md outline-none px-4 py-2 transition-[border] w-2/3"
+              class="color-input bg-esther w-full px-3 py-2 block rounded-md outline-none"
+              placeholder="search"
             />
+            <div
+              class="select-color flex-col bg-esther w-full rounded-md overflow-hidden overflow-y-auto cursor-pointer max-h-[100px] hidden"
+            ></div>
+            <div
+              class="colors-container flex w-full flex-wrap gap-3 justify-center mt-5"
+            ></div>
           </div>
-          <hr class="mt-5 text-esther" />
-          <h3 class="font-bold my-5">Description</h3>
-          <hr class="h-1 bg-title" />
-          <div id="editor"></div>
-          <div class="border-t-[1px] mt-5 border-t-esther">
-            <h3 class="mt-5 mb-8 font-bold">Content Type</h3>
-            <div class="flex gap-8">
-              <div class="form-group">
-                <select id="post-type" class="form-field">
-                  <option value="">Type *</option>
-                  <option value="product">Product</option>
-                  <option value="blog">Blog</option>
-                </select>
-                <label for="post-type" class="form-label invisible"
-                  >Type *</label
-                >
-              </div>
-              <div class="form-group">
-                <select id="category" class="form-field" required>
-                  <option value="">Category</option>
-                </select>
-                <label for="category" class="form-label invisible"
-                  >Category</label
-                >
-              </div>
-              <div class="form-group mb-8 price-container">
-                <input type="text" class="form-field" id="product-price" />
-                <label for="product-price" class="form-label"
-                  >Product Price <span class="text-[10px]">$</span></label
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            id="status-container"
-            class="border-t-[1px] mt-5 border-t-esther"
-          >
-            <h3 class="my-5 font-bold">Status</h3>
-            <div class="flex gap-8">
-              <div>
-                <label class="flex gap-2 mb-2" for="status">
-                  <div class="checkbox">
-                    <input type="checkbox" id="status" checked />
-                    <svg viewBox="0 0 21 18" class="check">
-                      <symbol id="tick-path" viewBox="0 0 21 18">
-                        <path
-                          d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
-                          fill="none"
-                          stroke-width="2.25"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </symbol>
-                      <defs>
-                        <mask id="tick">
-                          <use class="tick mask" href="#tick-path" />
-                        </mask>
-                      </defs>
-                      <use
-                        class="tick"
-                        href="#tick-path"
-                        stroke="currentColor"
-                      />
-                      <path
-                        fill="white"
-                        mask="url(#tick)"
-                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
-                      />
-                    </svg>
-                    <svg class="lines" viewBox="0 0 11 11">
-                      <path d="M5.88086 5.89441L9.53504 4.26746" />
-                      <path d="M5.5274 8.78838L9.45391 9.55161" />
-                      <path d="M3.49371 4.22065L5.55387 0.79198" />
-                    </svg>
-                  </div>
-                  <span>Active</span>
-                </label>
-                <span class="text-xs">Is the content active?</span>
-              </div>
-              <div>
-                <label class="flex gap-2 mb-2" for="available-checkbox">
-                  <div class="checkbox">
-                    <input type="checkbox" id="available-checkbox" checked />
-                    <svg viewBox="0 0 21 18" class="check">
-                      <symbol id="tick-path2" viewBox="0 0 21 18">
-                        <path
-                          d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
-                          fill="none"
-                          stroke-width="2.25"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </symbol>
-                      <defs>
-                        <mask id="tick2">
-                          <use class="tick mask" href="#tick-path2" />
-                        </mask>
-                      </defs>
-                      <use
-                        class="tick"
-                        href="#tick-path2"
-                        stroke="currentColor"
-                      />
-                      <path
-                        fill="white"
-                        mask="url(#tick2)"
-                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
-                      />
-                    </svg>
-                    <svg class="lines" viewBox="0 0 11 11">
-                      <path d="M5.88086 5.89441L9.53504 4.26746" />
-                      <path d="M5.5274 8.78838L9.45391 9.55161" />
-                      <path d="M3.49371 4.22065L5.55387 0.79198" />
-                    </svg>
-                  </div>
-                  <span>Available</span>
-                </label>
-                <span class="text-xs">Is the product available?</span>
-              </div>
-              <div>
-                <label class="flex gap-2 mb-2" for="comment-enabled">
-                  <div class="checkbox">
-                    <input type="checkbox" id="comment-enabled" />
-                    <svg viewBox="0 0 21 18" class="check">
-                      <symbol id="tick-path" viewBox="0 0 21 18">
-                        <path
-                          d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
-                          fill="none"
-                          stroke-width="2.25"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </symbol>
-                      <defs>
-                        <mask id="tick3">
-                          <use class="tick mask" href="#tick-path" />
-                        </mask>
-                      </defs>
-                      <use
-                        class="tick"
-                        href="#tick-path"
-                        stroke="currentColor"
-                      />
-                      <path
-                        fill="white"
-                        mask="url(#tick3)"
-                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z"
-                      />
-                    </svg>
-                    <svg class="lines" viewBox="0 0 11 11">
-                      <path d="M5.88086 5.89441L9.53504 4.26746" />
-                      <path d="M5.5274 8.78838L9.45391 9.55161" />
-                      <path d="M3.49371 4.22065L5.55387 0.79198" />
-                    </svg>
-                  </div>
-                  <span>Ability to post comments</span>
-                </label>
-                <span class="text-xs max-w-52 block"
-                  >If it is disabled, it is not possible to register a comment
-                  for the content
-                </span>
-              </div>
-            </div>
-          </div>
-          <button
-            id="submit-btn"
-            class="bg-primary p-2 w-28 block text-white rounded-md mt-12 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-          ></button>
-        </form>
-      </main>
-      <aside class="flex-1 rounded-md mr-8 w-[200px] text-center text-xs">
-        <div class="uploader-container single-image-container">
-          <i class="fa-solid fa-cloud-arrow-up text-7xl single-upload-icon"></i>
-          <span>Drag and drop your file here or</span>
-          <label for="single-img"> Upload Photo </label>
-          <input
-            class="hidden"
-            type="file"
-            id="single-img"
-            accept="image/jpeg, image/png, image/jpg, image/webp"
-          />
-          <span>File size limit: 5 MB</span>
-        </div>
-        <div class="uploader-container multi-image-container">
-          <i class="fa-brands fa-dropbox text-7xl"></i>
-          <div class="multi-img-container hidden w-full"></div>
-          <span>Upload multiple photos</span>
-          <label for="multi-img"> Upload Photo </label>
-          <input
-            multiple
-            class="hidden"
-            type="file"
-            id="multi-img"
-            accept="image/*"
-          />
-          <span>File size limit: 5 MB</span>
-        </div>
-        <div class="uploader-container color-picker">
-          <i class="fa-solid fa-palette text-7xl"></i>
-          <span>Choose product colors</span>
-          <input
-            type="text"
-            class="color-input bg-esther w-full px-3 py-2 block rounded-md outline-none"
-            placeholder="search"
-          />
-          <div
-            class="select-color flex-col bg-esther w-full rounded-md overflow-hidden overflow-y-auto cursor-pointer max-h-[100px] hidden"
-          ></div>
-          <div
-            class="colors-container flex w-full flex-wrap gap-3 justify-center mt-5"
-          ></div>
-        </div>
-      </aside>
+        </aside>
+      </div>
     </div>
     <script src="js/sweetalert2@11.js"></script>
     <script src="js/header.js"></script>

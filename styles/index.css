@@ -11,12 +11,32 @@
     @apply cursor-pointer;
   }
 
+  .sidebar.responsive{
+    @apply sm:w-full sm:overflow-hidden sm:fixed sm:inset-0 z-40
+  }
+
+  .sidebar.responsive li a span{
+    @apply sm:opacity-100
+  }
+  
+  .sidebar.active{
+    @apply overflow-hidden
+  }
+
+  .sidebar.active .sidebar-title{
+    @apply hidden
+  }
+
+  .sidebar.active a span{
+    @apply opacity-0
+  }
+
   .sidebar li {
     @apply border-b-[1px] border-esther;
   }
 
   .sidebar a {
-    @apply py-3 px-4 flex items-center gap-3 text-nowrap;
+    @apply py-3 px-2 flex items-center gap-3 text-nowrap;
   }
 
   .sidebar a.active {
@@ -27,12 +47,24 @@
     @apply text-lg text-primary;
   }
 
+  .sidebar a span{
+    @apply sm:opacity-0
+  }
+
   .home-content-list {
     @apply text-primary list-disc list-inside;
   }
 
   .home-content-list li:hover {
     @apply underline font-bold;
+  }
+
+  .home > div{
+    @apply bg-secondary rounded-md w-[48%] shadow-md md:w-full
+  }
+
+  .home > div h2{
+    @apply border-b-[1px] border-esther block p-3 font-bold
   }
 
   main:not(.home) {
@@ -43,8 +75,12 @@
     @apply h-fit bg-secondary rounded-md w-full mr-8;
   }
 
+  .main-table{
+    @apply flex-1
+  }
+
   .main-table .form-filter {
-    @apply flex flex-wrap gap-x-4 gap-y-4 justify-between items-end;
+    @apply flex flex-wrap gap-x-4 gap-y-4 items-end;
   }
 
   main h2 {
@@ -79,20 +115,20 @@
   }
 
   .main-table button[type="submit"] {
-    @apply bg-primary text-white text-sm rounded-sm px-5 py-3 ml-auto shadow-lg;
+    @apply bg-primary text-white text-sm rounded-sm px-5 py-3 shadow-lg xs:basis-full;
   }
 
   .main-table table {
-    @apply border-[1px] rounded-sm mt-5 w-full text-right;
+    @apply border-[1px] rounded-sm mt-5 w-full text-right ;
   }
 
   .main-table td,
   .main-table th {
-    @apply border-[1px] px-4 py-2 text-center;
+    @apply border-[1px] px-4 py-2 text-center first:xs:hidden;
   }
 
   .main-table tr {
-    @apply text-sm;
+    @apply text-sm ;
   }
 
   .main-table td img {
@@ -134,8 +170,12 @@
     @apply w-3 h-5 fill-none stroke-primary -top-3 -right-4;
   }
 
+  .status-container div{
+    @apply  md:basis-1/3 xs:basis-[100px]
+  }
+
   .uploader-container {
-    @apply bg-secondary shadow-md rounded-md flex flex-col items-center justify-between gap-3 text-primary py-4 px-5 mb-8;
+    @apply bg-secondary shadow-md rounded-md flex flex-col items-center justify-between gap-3 text-primary py-4 px-5 mb-8 flex-1 md:basis-1/3;
   }
 
   .uploader-container label {
@@ -189,6 +229,27 @@
 
   #page-buttons-container li.active {
     @apply bg-primary text-secondary
+  }
+
+  #comments-table td,
+  #offs-table td{
+    @apply xs:p-0
+  }
+
+  .status, .inventory, .date, .hour, .phone, .email{
+    @apply md:hidden
+  }
+
+  .category, .comment-actions, .actions{
+    @apply sm:hidden
+  }
+
+  .name{
+    @apply xs:text-xs
+  }
+
+  .actions, .username, .fullname, .form-group:first-child{
+    @apply xs:hidden
   }
 }
 

@@ -48,12 +48,12 @@ function generateUsers(users) {
       "beforeend",
       `<tr class="text-sm">
             <th>ID</th>
-            <th>Full Name</th>
+            <th class="fullname">Full Name</th>
             <th>Username</th>
             <th>Password</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Actions</th>
+            <th class="phone">Phone Number</th>
+            <th class="email">Email</th>
+            <th class="actions">Actions</th>
           </tr>`
     );
     users.forEach((user) => {
@@ -62,11 +62,11 @@ function generateUsers(users) {
       tableRow.insertAdjacentHTML(
         "beforeend",
         `<td>${user.id}</td>
-             <td>${user.firstname} ${user.lastname}</td>
+             <td class="fullname">${user.firstname} ${user.lastname}</td>
              <td>${user.username}</td>
              <td>${user.password}</td>
-             <td>${user.phone}</td>
-             <td>${user.email}</td>
+             <td class="phone">${user.phone}</td>
+             <td class="email">${user.email}</td>
              <td class="actions">
               <div>
                 <button onclick=showUserDetails(${JSON.stringify(

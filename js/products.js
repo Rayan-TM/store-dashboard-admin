@@ -21,20 +21,19 @@ function getProducts() {
 }
 
 function generateProducts(products) {
-  
   productsTable.innerHTML = "";
   if (products.length) {
     productsTable.insertAdjacentHTML(
       "beforeend",
-      `<tr class="text-sm">
+      `<tr>
     <th>ID</th>
     <th>Image</th>
     <th>Name</th>
     <th>Price</th>
-    <th>Inventory</th>
-    <th>Category</th>
-    <th>Status</th>
-    <th>Actions</th>
+    <th class="inventory">Inventory</th>
+    <th class="category">Category</th>
+    <th class="status">Status</th>
+    <th class="actions">Actions</th>
   </tr>`
     );
     const productsFragment = $.createDocumentFragment();
@@ -49,9 +48,9 @@ function generateProducts(products) {
         </td>
         <td>${product.name}</td>
         <td>${product.price ? product.price + "$" : "Free"}</td>
-        <td>${product.isAvailable ? "Available" : "Unavailable"}</td>
-        <td>${product.category}</td>
-        <td>${product.status ? "Active" : "Inactive"}</td>
+        <td class="inventory">${product.isAvailable ? "Available" : "Unavailable"}</td>
+        <td class="category">${product.category}</td>
+        <td class="status">${product.status ? "Active" : "Inactive"}</td>
         <td class="actions">
           <div>
             <button><a title="Show"><i class="fa-solid fa-eye"></i></a></button>

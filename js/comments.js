@@ -29,12 +29,12 @@ function generateComments(comments) {
       "beforeend",
       `<tr class="text-sm">
         <th>ID</th>
-        <th>Username</th>
+        <th class="username">Username</th>
         <th>Product/Article</th>
-        <th>Comment</th>
-        <th>Date</th>
-        <th>Hour</th>
-        <th>Actions</th>
+        <th >Comment</th>
+        <th class="date">Date</th>
+        <th class="hour">Hour</th>
+        <th class="comment-actions">Actions</th>
       </tr>`
     );
     comments.forEach((comment) => {
@@ -46,12 +46,12 @@ function generateComments(comments) {
       tableRow.insertAdjacentHTML(
         "beforeend",
         `<td>${comment.id}</td>
-            <td>${comment.user_ID}</td>
+            <td class="username">${comment.user_ID}</td>
             <td>${comment.content_ID}</td>
             <td>${comment.content}</td>
-            <td>${comment.date}</td>
-            <td>${comment.hour}</td>
-            <td class="actions">
+            <td class="date">${comment.date}</td>
+            <td class="hour">${comment.hour}</td>
+            <td class="comment-actions">
               <div>
                 <button onclick=answerComment(${JSON.stringify([
                   comment.isProduct,

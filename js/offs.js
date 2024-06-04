@@ -31,10 +31,10 @@ function generateOffs(offs) {
         <th>ID</th>
         <th>Discount Code</th>
         <th>Discount Percent</th>
-        <th>Date of Registration</th>
-        <th>Expiration date</th>
+        <th class="date">Date of Registration</th>
+        <th class="date">Expiration date</th>
         <th>Used for product</th>
-        <th>Actions</th>
+        <th class="actions">Actions</th>
       </tr>`
     );
     offs.forEach((off) => {
@@ -45,8 +45,8 @@ function generateOffs(offs) {
         `<td>${off.id}</td>
             <td>${off.discount_code}</td>
             <td>${off.discount_percent} %</td>
-            <td>${off.register_date}</td>
-            <td>${off.expire_date}</td>
+            <td class="date">${off.register_date}</td>
+            <td class="date">${off.expire_date}</td>
             <td>${off.product_ID}</td>
             <td class="actions">
               <div>

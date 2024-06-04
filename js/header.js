@@ -62,12 +62,12 @@ window.addEventListener("click", (e) => {
 btnToggleSidebar.addEventListener("click", () => {
   if (sidebar.classList.contains("w-[250px]")) {
     sidebar.classList.replace("w-[250px]", "w-[50px]");
-    sidebar.classList.add("overflow-hidden");
-    sidebarTitle.classList.add("hidden");
+    sidebar.classList.add('active')
+    sidebar.classList.add("responsive")
   } else {
     sidebar.classList.replace("w-[50px]", "w-[250px]");
-    sidebar.classList.remove("overflow-hidden");
-    sidebarTitle.classList.remove("hidden");
+    sidebar.classList.remove('active')
+    sidebar.classList.remove("responsive")
   }
 });
 

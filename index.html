@@ -17,13 +17,13 @@
   </head>
   <body class="bg-esther text-title">
     <header
-      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+      class="flex fixed top-0 w-full z-50 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
     >
       <button class="border-r-[1px] pr-5 border-r-esther">
         <i class="fa-solid fa-bars text-2xl"></i>
       </button>
       <a class="text-primary" href="index.html">Web Monster</a>
-      <div class="relative theme">
+      <div class="relative theme sm:hidden">
         <div
           class="btn-theme cursor-pointer text-md flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
         >
@@ -52,17 +52,17 @@
           </ul>
         </div>
       </div>
-      <div class="ml-auto">
+      <div class="ml-auto flex items-center gap-2 xs:hidden">
         <i class="fa-solid fa-user-tie text-primary ml-2"></i>
         <span>rayan@gmail.com</span>
       </div>
     </header>
     <div class="flex gap-8 pt-24 min-h-screen">
       <aside
-        class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
+        class="w-[250px] sm:overflow-hidden sm:w-[50px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
       >
         <div
-          class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
+          class="sidebar-title sm:hidden bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
         >
           Dashboard
         </div>
@@ -108,19 +108,19 @@
           </ul>
         </nav>
       </aside>
-      <main class="flex flex-wrap gap-8 h-fit w-full home">
-        <div class="bg-secondary rounded-md w-[47%] shadow-md">
-          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+      <main class="flex flex-1 justify-between flex-wrap gap-y-8 h-fit w-full home md:text-center mr-8 mb-8">
+        <div >
+          <h2>
             Your score
           </h2>
-          <div class="flex justify-between gap-3 p-5 font-bold">
+          <div class="flex justify-between md:flex-wrap md:justify-center md:gap-10 gap-3 p-5 font-bold">
             <div>
               <span class="text-3xl block mb-4">Content quality</span>
               <p class="text-xl text-primary">
                 Your average score as calculated by the Content Quality Tool
               </p>
             </div>
-            <div class="w-1/2">
+            <div>
               <div
                 class="content-quality-circle w-[120px] h-[120px] rounded-full bg-esther mx-auto flex justify-center items-center"
               >
@@ -133,14 +133,14 @@
             </div>
           </div>
         </div>
-        <div class="bg-secondary rounded-md w-[47%] shadow-md">
-          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+        <div >
+          <h2>
             Your list of articles today
           </h2>
           <ul id="blog-list" class="p-5 home-content-list"></ul>
         </div>
-        <div class="bg-secondary rounded-md w-[47%] shadow-md">
-          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+        <div >
+          <h2>
             Your total number of articles
           </h2>
           <div class="flex flex-col gap-3 text-center p-5">
@@ -150,9 +150,8 @@
             >
           </div>
         </div>
-
-        <div class="bg-secondary rounded-md w-[47%] shadow-md">
-          <h2 class="border-b-[1px] border-esther block p-3 font-bold">
+        <div >
+          <h2>
             The total number of your products
           </h2>
           <div class="flex flex-col gap-3 text-center p-5">

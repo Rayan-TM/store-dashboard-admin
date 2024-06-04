@@ -30,11 +30,11 @@ function generateBlog(blogs) {
         <th>ID</th>
         <th>Image</th>
         <th>Name</th>
-        <th>Date</th>
-        <th>Hour</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th>Actions</th>
+        <th class="date">Date</th>
+        <th class="hour">Hour</th>
+        <th class="category">Category</th>
+        <th class="status">Status</th>
+        <th class="actions">Actions</th>
       </tr>`
     );
 
@@ -49,10 +49,10 @@ function generateBlog(blogs) {
               <img src="${blog.image || "./assets/default.png"}" alt="" />
             </td>
             <td>${blog.title}</td>
-            <td>${blog.date}</td>
-            <td>${blog.hour}</td>
-            <td>${blog.category}</td>
-            <td>${blog.status ? "Active" : "Inactive"}</td>
+            <td class="date">${blog.date}</td>
+            <td class="hour">${blog.hour}</td>
+            <td class="category">${blog.category}</td>
+            <td class="status">${blog.status ? "Active" : "Inactive"}</td>
             <td class="actions">
                 <div>
                   <button><a title="Show"><i class="fa-solid fa-eye"></i></a></button>

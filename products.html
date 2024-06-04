@@ -17,59 +17,59 @@
   </head>
   <body class="bg-esther text-title">
     <header
-      class="flex fixed top-0 w-full z-10 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
-    >
-      <button class="border-r-[1px] pr-5 border-r-esther">
-        <i class="fa-solid fa-bars text-2xl"></i>
-      </button>
-      <a class="text-primary" href="index.html">Web Monster</a>
-      <div class="relative theme">
-        <div
-          class="btn-theme cursor-pointer text-md flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
-        >
-          <span class="mr-1 font-light">Page Theme</span>
-          <i class="fa-solid fa-droplet text-primary"></i>
-        </div>
-        <div
-          class="theme-list z-10 hidden absolute left-1/2 -translate-x-1/2 w-[120px] p-4 top-[130%] bg-secondary border-primary border-2 rounded-md before:content-[''] before:absolute before:bg-secondary before:border-primary before:w-3 before:h-3 before:-top-2 before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:border-l-2 before:border-t-2"
-        >
-          <ul class="flex flex-col gap-3">
-            <li>
-              <span>Classic</span
-              ><i class="fa-solid fa-droplet text-[#fd3859]"></i>
-            </li>
-            <li>
-              <span>Purple</span
-              ><i class="fa-solid fa-droplet text-[#bb86fc]"></i>
-            </li>
-            <li>
-              <span>Orange</span
-              ><i class="fa-solid fa-droplet text-[#ff5210]"></i>
-            </li>
-            <li>
-              <span>Red</span><i class="fa-solid fa-droplet text-[#EB1616]"></i>
-            </li>
-          </ul>
-        </div>
+    class="flex fixed top-0 w-full z-50 items-center gap-5 px-8 bg-secondary h-16 shadow-md mb-8"
+  >
+    <button class="border-r-[1px] pr-5 border-r-esther">
+      <i class="fa-solid fa-bars text-2xl"></i>
+    </button>
+    <a class="text-primary" href="index.html">Web Monster</a>
+    <div class="relative theme sm:hidden">
+      <div
+        class="btn-theme cursor-pointer text-md flex justify-center items-center hover:brightness-90 bg-esther w-[150px] px-4 py-2 rounded-md"
+      >
+        <span class="mr-1 font-light">Page Theme</span>
+        <i class="fa-solid fa-droplet text-primary"></i>
       </div>
-      <div class="ml-auto">
-        <i class="fa-solid fa-user-tie text-primary ml-2"></i>
-        <span>rayan@gmail.com</span>
+      <div
+        class="theme-list z-10 hidden absolute left-1/2 -translate-x-1/2 w-[120px] p-4 top-[130%] bg-secondary border-primary border-2 rounded-md before:content-[''] before:absolute before:bg-secondary before:border-primary before:w-3 before:h-3 before:-top-2 before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:border-l-2 before:border-t-2"
+      >
+        <ul class="flex flex-col gap-3">
+          <li>
+            <span>Classic</span
+            ><i class="fa-solid fa-droplet text-[#fd3859]"></i>
+          </li>
+          <li>
+            <span>Purple</span
+            ><i class="fa-solid fa-droplet text-[#bb86fc]"></i>
+          </li>
+          <li>
+            <span>Orange</span
+            ><i class="fa-solid fa-droplet text-[#ff5210]"></i>
+          </li>
+          <li>
+            <span>Red</span><i class="fa-solid fa-droplet text-[#EB1616]"></i>
+          </li>
+        </ul>
       </div>
-    </header>
+    </div>
+    <div class="ml-auto flex items-center gap-2 xs:hidden">
+      <i class="fa-solid fa-user-tie text-primary ml-2"></i>
+      <span>rayan@gmail.com</span>
+    </div>
+  </header>
     <div class="flex gap-8 pt-24 min-h-screen">
       <aside
-      class="w-[250px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
+      class="w-[250px] sm:overflow-hidden sm:w-[50px] transition-[width] duration-200 bg-secondary sidebar rounded-se-md shadow-md relative"
     >
       <div
-        class="sidebar-title bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
+        class="sidebar-title sm:hidden bg-primary text-white absolute right-1/2 -top-3 rounded-md translate-x-1/2 px-6 py-3"
       >
         Dashboard
       </div>
       <nav class="mt-20">
         <ul>
           <li class="border-t-[1px]">
-            <a href="index.html"
+            <a href="index.html" 
               ><i class="fa-solid fa-house"></i><span>Home</span></a
             >
           </li>
@@ -95,7 +95,7 @@
             >
           </li>
           <li>
-            <a href="users.html" 
+            <a href="users.html"
               ><i class="fa-solid fa-user-group"></i><span>Users</span></a
             >
           </li>
@@ -120,13 +120,13 @@
               <input type="text" class="form-field" id="title" />
               <label for="title" class="form-label">Name</label>
             </div>
-            <div class="form-group">
+            <div class="form-group category">
               <select id="category" class="form-field" required></select>
               <label for="category" class="form-label invisible"
                 >Category</label
               >
             </div>
-            <div class="form-group">
+            <div class="form-group status">
               <select id="status" class="form-field" required>
                 <option value="">Status</option>
                 <option value="1">Active</option>
@@ -134,7 +134,7 @@
               </select>
               <label for="status" class="form-label invisible">Status</label>
             </div>
-            <div class="form-group">
+            <div class="form-group inventory">
               <select id="isAvailable" class="form-field" required>
                 <option value="">Inventory</option>
                 <option value="1">Available</option>
