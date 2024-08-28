@@ -26,14 +26,14 @@ let imageContainer = null;
 let colors = null;
 let selectedColors = [];
 let prevColors = null;
-let albums = ""
+let albums = "";
 let singleImage = null;
 let file = null;
-
 
 const locationSearch = location.search;
 const urlParams = new URLSearchParams(locationSearch);
 const contentID = urlParams.get("id");
+const contentUrl = urlParams.get("url");
 const contentType = urlParams.get("type");
 let myEditor = null;
 
@@ -49,9 +49,8 @@ function loadContentImage(image) {
   }
 }
 
-
 function loadMultiImage(image) {
-  albums += `,${image}`
+  albums += `,${image}`;
   let randomId = crypto.randomUUID().slice(0, 6);
   output.innerHTML += `
   <div id='image${randomId}' class="relative group basis-[28%] h-10 bg-cover">
@@ -68,7 +67,7 @@ async function loadNewContentInputs() {
   } else {
     selectType.classList.add("hidden");
     if (contentType === "product") {
-      const [currentProduct] = await fetch(`${baseUrl}/products/${contentID}`)
+      const [currentProduct] = await fetch(`${baseUrl}/products/${contentUrl}`)
         .then((res) => res.json())
         .then((product) => product);
 
@@ -142,7 +141,6 @@ function checkSelectType(type, contentName = "") {
 
 function addContent() {
   if (selectType.value === "product") {
-
     const newProduct = {
       name: title.value || "Unknown",
       price: productPrice.value || 0,
@@ -150,7 +148,7 @@ function addContent() {
       colors: JSON.stringify(selectedColors) || [],
       category: selectCategory.value || "Uncategorized",
       image: singleImage?.getAttribute("src") || "",
-      album: albums.split(',').slice(1).join(',') || "",
+      album: albums.split(",").slice(1).join(",") || "",
       status: statusCheckBox.checked ? 1 : 0,
       isAvailable: availableCheckbox.checked ? 1 : 0,
       allowComment: commentEnabledCheckBox.checked ? 1 : 0,
@@ -197,7 +195,6 @@ function addContent() {
 
 function updateContent() {
   if (contentType === "product") {
-
     const updatedProduct = {
       name: title.value + "" || "Unknown",
       price: +productPrice.value || 0,
@@ -205,7 +202,7 @@ function updateContent() {
       colors: JSON.stringify(selectedColors) || [],
       category: selectCategory.value || "Uncategorized",
       image: singleImage?.getAttribute("src") || "",
-      album: albums.split(',').slice(1).join(',') || "",
+      album: albums.split(",").slice(1).join(",") || "",
       status: statusCheckBox.checked ? 1 : 0,
       isAvailable: availableCheckbox.checked ? 1 : 0,
       allowComment: commentEnabledCheckBox.checked ? 1 : 0,

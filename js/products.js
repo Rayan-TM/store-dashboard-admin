@@ -48,7 +48,9 @@ function generateProducts(products) {
         </td>
         <td>${product.name}</td>
         <td>${product.price ? product.price + "$" : "Free"}</td>
-        <td class="inventory">${product.isAvailable ? "Available" : "Unavailable"}</td>
+        <td class="inventory">${
+          product.isAvailable ? "Available" : "Unavailable"
+        }</td>
         <td class="category">${product.category}</td>
         <td class="status">${product.status ? "Active" : "Inactive"}</td>
         <td class="actions">
@@ -57,9 +59,9 @@ function generateProducts(products) {
             <button onclick=removeProduct(${
               product.id
             }) title="Delete"><i class="fa-solid fa-trash-can"></i></button>
-            <button><a href="newContent.html?id=${
-              product.id
-            }&type=product" title="Edit"><i class="fa-solid fa-pencil"></i></a></button>
+            <button><a href="newContent.html?url=${product.url}&id=${
+          product.id
+        }&type=product" title="Edit"><i class="fa-solid fa-pencil"></i></a></button>
           </div>
         </td>`
       );
